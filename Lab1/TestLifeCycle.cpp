@@ -1,68 +1,8 @@
+//John Link, jwl9vq@virginia.edu, 8/29/21, TestLifeCycle.cpp
+#include "LifeCycle.h"
 #include <iostream>
-#include <string>
+
 using namespace std;
-
-// Declare the MyObject class
-class MyObject {
-public:
-    static int numObjs;
-
-    MyObject();                    // default constructor
-    MyObject(string n);            // constructor with name parameter
-    MyObject(const MyObject& rhs); // copy constructor
-    ~MyObject();                   // destructor
-
-    string getName() const;
-    void setName(const string& newName);
-
-    friend ostream& operator<<(ostream& output, const MyObject& obj);
-private:
-    string name;
-    int id;
-};
-
-// Define the member functions we declared above
-// Remember: member functions are defined as Class::method()
-
-// Constructors and destructors - no return types
-MyObject::MyObject() {
-    // Important: notice how we don't define 'name' or 'id' here
-    // Instead, we're setting the variables that we declared in MyObject
-    name = "--default--";
-    id = ++numObjs;
-    cout << "MyObject Default constructor:   " << *this << endl;
-}
-
-MyObject::MyObject(string n) {
-    name = n;
-    id = ++numObjs;
-    cout << "MyObject Parameter constructor: " << *this << endl;
-}
-
-MyObject::MyObject(const MyObject& rhs) {
-    name = rhs.name;
-    id = ++numObjs;
-    cout << "MyObject Copy constructor:      " << *this << endl;
-}
-
-MyObject::~MyObject() {
-    cout << "MyObject Destructor:            " << *this << endl;
-}
-
-// Regular methods, with return types
-string MyObject::getName() const {
-    return name;
-}
-
-void MyObject::setName(const string& newName) {
-    name = newName;
-}
-
-// Let cout know how to print MyObjects
-ostream& operator<<(ostream& output, const MyObject& obj) {
-    // output in format: ("object name", id)
-    return output << "(\"" << obj.name << "\", " << obj.id << ")";
-}
 
 // Prototypes for non-member functions we define later on
 // These are *non-member* functions because we didn't declare them as part of the MyObject class
@@ -163,4 +103,3 @@ void swapMyObj(MyObject& o1, MyObject& o2) {
     o1.setName(o2.getName());
     o2.setName(tmp.getName());
 }
-

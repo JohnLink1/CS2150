@@ -5,4 +5,17 @@
 
 using namespace std;
 
-List::List(const List& source = null) : source()
+List::List(const List::List& source == null) : head(source), tail(null), count(0){
+
+}
+
+List::isEmpty(){
+    if(count == 0){
+        return true;
+    }
+    return false;
+}
+
+List::makeEmpty(){
+
+}

@@ -5,19 +5,23 @@
 
 using namespace std;
 
-ListItr::ListItr(ListNode* theNode = new ListNode) : current(theNode){
+ListItr::ListItr() : current(new ListNode){
+
+}
+
+ListItr::ListItr(ListNode* theNode) : current(theNode){
 
 }
 
 bool ListItr::isPastEnd() const{
-    if((*current).next == null){
+    if((*current).next == NULL){
         return true;
     }
     return false;
 }
 
 bool ListItr::isPastBeginning() const{
-    if((*current).previous == null){
+    if((*current).previous == NULL){
         return true;
     }
     return false;

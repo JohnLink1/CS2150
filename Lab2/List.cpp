@@ -5,17 +5,23 @@
 
 using namespace std;
 
-List::List(const List::List& source == null) : head(source), tail(null), count(0){
+List::List(const List::List& source = null) : head(source), tail(new ListNode()), count(0){
 
 }
 
-List::isEmpty(){
-    if(count == 0){
-        return true;
-    }
-    return false;
+void List::insertAtTail(int x){
+    
 }
 
-List::makeEmpty(){
+ListItr List::last(){
+ListItr::ListItr itr()
+
+}
+
+ListItr List::first(){
+
+}
+
+int List::size(){
 
 }

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-ListNode::ListNode() : value(NULL), next(NULL), previous(NULL){
+ListNode::ListNode() : next(NULL), previous(NULL){
 
 }
 

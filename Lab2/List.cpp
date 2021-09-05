@@ -67,6 +67,7 @@ void List::insertAtTail(int x){
     (*itr.current).value = x;
     (*itr.current).next = new ListNode;
     (*(*itr.current).next).previous = itr.current;
+    tail = (*itr.current).next;
     count++;
 }
 

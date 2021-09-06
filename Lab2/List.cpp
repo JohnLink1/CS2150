@@ -10,7 +10,18 @@ List::List() : head(new ListNode), tail(new ListNode), count(0){
     tail->previous = head;
 }
 List::List(const List& source) : head(new ListNode), tail(new ListNode), count(source.size()){
-    
+    head=new ListNode();
+    tail=new ListNode();
+    head->next=tail;
+    tail->previous=head;
+    count=0;
+
+    // Make a deep copy of the list
+    ListItr iter(source.head->next);
+    while (!iter.isPastEnd()) {
+        insertAtTail(iter.retrieve());
+        iter.moveForward();
+    }
 }
 
 List::~List(){
@@ -18,7 +29,22 @@ List::~List(){
 }
 
 List& List::operator=(const List& source){
+    if (this == &source) {
+        // The two are the same list; no need to do anything
+        return *this;
+    } else {
+        // Clear out anything this list contained
+        // before copying over the items from the other list
+        makeEmpty();
 
+        // Make a deep copy of the list
+        ListItr iter(source.head->next);
+        while (!iter.isPastEnd()) {
+            insertAtTail(iter.retrieve());
+            iter.moveForward();
+        }
+    }
+    return *this;
 }
 
 bool List::isEmpty() const{
@@ -72,7 +98,13 @@ void List::insertAtTail(int x){
 }
 
 ListItr List::find(int x){
-
+    ListItr itr(head);
+    while(!itr.isPastEnd() && (itr.current)->value != x){
+        itr.moveForward();
+    }
+    if((itr.current)->value == x)
+        return itr;
+    return itr;
 }
 
 void List::remove(int x){

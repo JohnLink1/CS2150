@@ -14,14 +14,14 @@ ListItr::ListItr(ListNode* theNode) : current(theNode){
 }
 
 bool ListItr::isPastEnd() const{
-    if((*current).next == NULL){
+    if(current->next == NULL){
         return true;
     }
     return false;
 }
 
 bool ListItr::isPastBeginning() const{
-    if((*current).previous == NULL){
+    if(current->previous == NULL){
         return true;
     }
     return false;
@@ -29,32 +29,34 @@ bool ListItr::isPastBeginning() const{
 
 void ListItr::moveForward(){
     if(!isPastEnd()){
-        current = (*current).next;
+        current = current->next;
     }
 }
 
 void ListItr::moveBackward(){
     if(!isPastBeginning()){
-        current = (*current).previous;
+        current = current->previous;
     }
 }
 
 int ListItr::retrieve() const{
-    return (*current).value;
+    return current->value;
 }
 
 void printList(List& source, bool forward){
     if(forward){
         ListItr itr = source.first();
         while(!itr.isPastEnd()){
-            cout << itr.retrieve() << endl;
+            cout << itr.retrieve() << " ";
             itr.moveForward();
         }
+    cout << endl;
     return;
     }
     ListItr itr = source.last();
     while(!itr.isPastBeginning()){
-        cout << itr.retrieve() << endl;
+        cout << itr.retrieve() << " ";
         itr.moveBackward();
     }
+    cout << endl;
 }

@@ -6,8 +6,8 @@
 using namespace std;
 
 List::List() : head(new ListNode), tail(new ListNode), count(0){
-    (*head).next = tail;
-    (*tail).previous = head;
+    head->next = tail;
+    tail->previous = head;
 }
 List::List(const List& source) : head(new ListNode), tail(new ListNode), count(source.size()){
     
@@ -64,10 +64,10 @@ void List::insertBefore(int x, ListItr position){
 void List::insertAtTail(int x){
     ListItr itr = last();
     itr.moveForward();
-    (*itr.current).value = x;
-    (*itr.current).next = new ListNode;
-    (*(*itr.current).next).previous = itr.current;
-    tail = (*itr.current).next;
+    (itr.current)->value = x;
+    (itr.current)->next = new ListNode;
+    ((itr.current)->next)->previous = itr.current;
+    tail = (itr.current)->next;
     count++;
 }
 

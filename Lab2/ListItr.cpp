@@ -43,20 +43,3 @@ int ListItr::retrieve() const{
     return current->value;
 }
 
-void printList(List& source, bool forward){
-    if(forward){
-        ListItr itr = source.first();
-        while(!itr.isPastEnd()){
-            cout << itr.retrieve() << " ";
-            itr.moveForward();
-        }
-    cout << endl;
-    return;
-    }
-    ListItr itr = source.last();
-    while(!itr.isPastBeginning()){
-        cout << itr.retrieve() << " ";
-        itr.moveBackward();
-    }
-    cout << endl;
-}

@@ -1,3 +1,4 @@
+
 //John Link, jwl9vq@virginia.edu, 9/2/21, List.cpp
 
 #include <iostream>
@@ -126,22 +127,34 @@ ListItr List::find(int x){
 }
 
 void List::remove(int x){
-    ListItr itr(head);
-    while(!itr.isPastEnd()){
-        if((itr.current)->value == x){
-            (itr.current)->next->previous = (itr.current)->previous;
-            (itr.current)->previous->next = (itr.current)->next;
-            delete itr.current;
-            count--;
-            return;
-        }
-        itr.moveForward();
-    }
+    ListItr itr = find(x);
+    (itr.current)->next->previous = (itr.current)->previous;
+    (itr.current)->previous->next = (itr.current)->next;
+    delete (itr.current)->next;
+    delete (itr.current)->previous;
+    delete itr.current;
+    count--;
+    return;
 }
 
 int List::size() const{
     return count;
 }
 
-
-
+void printList(List& source, bool forward){
+    if(forward){
+        ListItr itr = source.first();
+        while(!itr.isPastEnd()){
+            cout << itr.retrieve() << " ";
+            itr.moveForward();
+        }
+    cout << endl;
+    return;
+    }
+    ListItr itr = source.last();
+    while(!itr.isPastBeginning()){
+        cout << itr.retrieve() << " ";
+        itr.moveBackward();
+    }
+    cout << endl;
+}

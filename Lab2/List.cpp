@@ -25,7 +25,9 @@ List::List(const List& source) : head(new ListNode), tail(new ListNode), count(s
 }
 
 List::~List(){
-
+    makeEmpty();
+    delete head;
+    delete tail;
 }
 
 List& List::operator=(const List& source){
@@ -48,10 +50,16 @@ List& List::operator=(const List& source){
 }
 
 bool List::isEmpty() const{
+    if(head->next == tail){
+	return true;
+    }
     return false;
 }
 
 void List::makeEmpty(){
+    while(head->next != tail){
+	remove(head->next->value);
+    }
 
 }
 
@@ -80,11 +88,21 @@ ListItr List::first(){
 }
 
 void List::insertAfter(int x, ListItr position){
-
+    (position.current)->next->previous = new ListNode;
+    (position.current)->next->previous->next = (position.current)->next;
+    (position.current)->next->previous->previous = position.current;
+    (position.current)->next = (position.current)->next->previous;
+    (position.current)->next->value = x;
+    count++;
 }
 
 void List::insertBefore(int x, ListItr position){
-
+    (position.current)->previous->next = new ListNode;
+    (position.current)->previous->next->previous = (position.current)->previous;
+    (position.current)->previous->next->next = position.current;
+    (position.current)->previous = (position.current)->previous->next;
+    (position.current)->previous->value = x;
+    count++;
 }
 
 void List::insertAtTail(int x){
@@ -108,7 +126,17 @@ ListItr List::find(int x){
 }
 
 void List::remove(int x){
-
+    ListItr itr(head);
+    while(!itr.isPastEnd()){
+        if((itr.current)->value == x){
+            (itr.current)->next->previous = (itr.current)->previous;
+            (itr.current)->previous->next = (itr.current)->next;
+            delete itr.current;
+            count--;
+            return;
+        }
+        itr.moveForward();
+    }
 }
 
 int List::size() const{

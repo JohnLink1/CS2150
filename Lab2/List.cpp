@@ -66,24 +66,12 @@ void List::makeEmpty(){
 
 ListItr List::last(){
     ListItr itr(tail);
-    if(count == 0){
-	return itr;
-    }
-    while(!itr.isPastEnd()){
-        itr.moveForward();
-    }
     itr.moveBackward();
     return itr;
 }
 
 ListItr List::first(){
     ListItr itr(head);
-    if(count == 0){
-        return itr;
-    }
-    while(!itr.isPastBeginning()){
-        itr.moveBackward();
-    }
     itr.moveForward();
     return itr;
 }

@@ -128,6 +128,10 @@ int List::size() const{
 }
 
 void printList(List& source, bool forward){
+    if(source.size() == 0){
+        cout << endl;
+	return;
+    }
     if(forward){
         ListItr itr = source.first();
         while(!itr.isPastEnd()){

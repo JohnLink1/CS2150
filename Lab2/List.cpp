@@ -130,8 +130,6 @@ void List::remove(int x){
     ListItr itr = find(x);
     (itr.current)->next->previous = (itr.current)->previous;
     (itr.current)->previous->next = (itr.current)->next;
-    delete (itr.current)->next;
-    delete (itr.current)->previous;
     delete itr.current;
     count--;
     return;

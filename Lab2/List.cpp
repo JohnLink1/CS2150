@@ -66,24 +66,12 @@ void List::makeEmpty(){
 
 ListItr List::last(){
     ListItr itr(tail);
-    if(count == 0){
-	return itr;
-    }
-    while(!itr.isPastEnd()){
-        itr.moveForward();
-    }
     itr.moveBackward();
     return itr;
 }
 
 ListItr List::first(){
     ListItr itr(head);
-    if(count == 0){
-        return itr;
-    }
-    while(!itr.isPastBeginning()){
-        itr.moveBackward();
-    }
     itr.moveForward();
     return itr;
 }
@@ -140,6 +128,10 @@ int List::size() const{
 }
 
 void printList(List& source, bool forward){
+    if(source.size() == 0){
+        cout << endl;
+	return;
+    }
     if(forward){
         ListItr itr = source.first();
         while(!itr.isPastEnd()){

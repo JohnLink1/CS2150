@@ -40,15 +40,28 @@ int PostFCalc::calculate(string str){
     for(int itr = 0; itr < vec.size(); itr++){
         if(vec.at(itr).length() == 1 && isOperator(vec.at(itr))){
             if(vec.at(itr) == "~"){
-                x = staq.top();
-                staq.pop();
-                y = 0;
+		if(!staq.empty()){
+                    x = staq.top();
+                    staq.pop();
+                    y = 0;
+		}
+		else{
+		    cout << "Error, empty stack, cannot pop" << endl;
+		    return -1;
+		}
+		    
             }
             else{
-                x = staq.top();
-                staq.pop();
-                y = staq.top();
-                staq.pop();
+		if(!staq.empty()){
+                    x = staq.top();
+                    staq.pop();
+                    y = staq.top();
+                    staq.pop();
+		}
+		else{
+		    cout << "Error, empty stack cannot pop" << endl;
+		    return -1;
+		}
             }
             staq.push(maths(x, y, vec.at(itr)));
         }
@@ -57,7 +70,10 @@ int PostFCalc::calculate(string str){
             staq.push(val);
         }
     }
-    return staq.top();
+    if(!staq.empty()){
+        return staq.top();
+    }
+    return -1;
 }
 vector<string> PostFCalc::toVector(string str){
     vector<string> vec;

@@ -1,9 +1,9 @@
 //John Link, jwl9vq@virginia.edu, 9/10/21, postfixCalculator.cpp
 
 #include "postfixCalculator.h"
+#include "stack.h"
 #include <iostream>
 #include <sstream>
-#include <stack>
 #include <string>
 #include <vector>
 
@@ -40,7 +40,7 @@ int PostFCalc::calculate(string str){
     for(int itr = 0; itr < vec.size(); itr++){
         if(vec.at(itr).length() == 1 && isOperator(vec.at(itr))){
             if(vec.at(itr) == "~"){
-		if(!staq.empty()){
+		if(!staq.isEmpty()){
                     x = staq.top();
                     staq.pop();
                     y = 0;
@@ -52,7 +52,7 @@ int PostFCalc::calculate(string str){
 		    
             }
             else{
-		if(!staq.empty()){
+		if(!staq.isEmpty()){
                     x = staq.top();
                     staq.pop();
                     y = staq.top();
@@ -70,11 +70,12 @@ int PostFCalc::calculate(string str){
             staq.push(val);
         }
     }
-    if(!staq.empty()){
+    if(!staq.isEmpty()){
         return staq.top();
     }
     return -1;
 }
+
 vector<string> PostFCalc::toVector(string str){
     vector<string> vec;
     string temp = "";

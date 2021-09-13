@@ -1,7 +1,8 @@
 //John Link, jwl9vq@virginia.edu, 9/10/21, postfixCalculator.h
 #ifndef POSTFIXCALCULATOR
 #define POSTFIXCALCULATOR
-#include <stack>
+#include "stack.h"
+
 #include <string>
 #include <vector>
 
@@ -20,6 +21,6 @@ public:
     void print(int finval);
 
 private:
-    stack<int> staq;
+    Stack staq;
 };
 #endif

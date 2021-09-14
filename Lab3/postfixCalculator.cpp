@@ -3,9 +3,7 @@
 #include "postfixCalculator.h"
 #include "stack.h"
 #include <iostream>
-#include <sstream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -32,14 +30,21 @@ bool PostFCalc::isOperator(string ch){
 }
 
 int PostFCalc::calculate(string str){
-
-    vector<string> vec = toVector(str);
-    int val = 0;
     int x = 0;
     int y = 0;
-    for(int itr = 0; itr < vec.size(); itr++){
-        if(vec.at(itr).length() == 1 && isOperator(vec.at(itr))){
-            if(vec.at(itr) == "~"){
+    string temp = "";
+    while(str.length() !=0){
+	
+	temp = "";
+        while(str.substr(0, 1) != " " && str.length() !=0){
+            temp = temp + str.substr(0, 1);
+            str = str.substr(1);
+        }
+        if(str.length() != 0)
+            str = str.substr(1);
+        
+        if(temp.length() == 1 && isOperator(temp)){
+            if(temp == "~"){
 		if(!staq.isEmpty()){
                     x = staq.top();
                     staq.pop();
@@ -63,33 +68,16 @@ int PostFCalc::calculate(string str){
 		    return -1;
 		}
             }
-            staq.push(maths(x, y, vec.at(itr)));
+            staq.push(maths(x, y, temp));
         }
         else{
-            val = stoi(vec.at(itr));
-            staq.push(val);
+            staq.push(stoi(temp));
         }
     }
     if(!staq.isEmpty()){
         return staq.top();
     }
     return -1;
-}
-
-vector<string> PostFCalc::toVector(string str){
-    vector<string> vec;
-    string temp = "";
-    while(str.length() != 0){
-        temp = "";
-        while(str.substr(0, 1) != " " && str.length() !=0){
-            temp = temp + str.substr(0, 1);
-            str = str.substr(1);
-        }
-        vec.push_back(temp);
-        if(str.length() != 0)
-            str = str.substr(1);
-    }
-    return vec;
 }
 
 int PostFCalc::maths(int x, int y, string op){

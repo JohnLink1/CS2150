@@ -4,7 +4,6 @@
 #include "stack.h"
 
 #include <string>
-#include <vector>
 
 using namespace std;
 
@@ -15,7 +14,6 @@ public:
     ~PostFCalc();
 
     bool isOperator(string ch);
-    vector<string> toVector(string str);
     int maths(int x, int y, string op);
     int calculate(string str);
     void print(int finval);

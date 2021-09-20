@@ -12,8 +12,8 @@ int main(){
 	// the values you found while experimenting.
 
 	string nonPointers[6][5] = {
-		{"int", "4" /*size*/, "2147483647" /*max value*/, "0" /*zero as stored in hex*/,"1" /*one as stored in hex*/},
-		{"unsigned int", "4" /*size*/, "4294967295" /*max value*/, "0" /*zero as stored in hex*/, "1" /*one as stored in hex*/},
+		{"int", "4" /*size*/, "2147483647" /*max value*/, "0" /*zero as stored in hex*/,"0x1" /*one as stored in hex*/},
+		{"unsigned int", "4" /*size*/, "4294967295" /*max value*/, "0" /*zero as stored in hex*/, "0x1" /*one as stored in hex*/},
 		{"float", "4" /*size*/, "2^127" /*max value*/, "0.0" /*zero as stored in hex*/, "0x3f800000" /*one as stored in hex*/},
 		{"double", "8" /*size*/, "2^1024" /*max value*/, "0.0" /*zero as stored in hex*/, "0x3ff0000000000000" /*one as stored in hex*/},
 		{"char", "1" /*size*/, "127" /*max value*/, "'0'" /*zero as stored in hex*/, "SOH" /*one as stored in hex*/},
@@ -22,9 +22,9 @@ int main(){
 	};
 
 	string pointers[3][4] = {
-		{"int*", "8" /*size*/, "" /*max value*/, "" /*NULL as stored in hex*/},
-		{"char*", "8" /*size*/, "" /*max value*/, "" /*NULL as stored in hex*/},
-		{"double*", "8" /*size*/, "" /*max value*/, "" /*NULL as stored in hex*/},
+		{"int*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0" /*NULL as stored in hex*/},
+		{"char*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0" /*NULL as stored in hex*/},
+		{"double*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0" /*NULL as stored in hex*/},
 	};
 
 	tableDump(nonPointers, pointers);

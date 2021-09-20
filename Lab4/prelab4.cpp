@@ -8,23 +8,23 @@ using namespace std;
 
 void sizeOfTest(){
 int x;
-cout << "Size of  int: " << sizeof(x) << endl; 
+cout << "Size of int: " << sizeof(x) << endl; 
 unsigned int un;
-cout << "Size of  unsigned int: " << sizeof(un) << endl;
+cout << "Size of unsigned int: " << sizeof(un) << endl;
 float fl;
-cout << "Size of  float: " << sizeof(fl) << endl;
+cout << "Size of float: " << sizeof(fl) << endl;
 double d;
-cout << "Size of  double: " << sizeof(d) << endl;
+cout << "Size of double: " << sizeof(d) << endl;
 char c;
-cout << "Size of  char: " << sizeof(c) << endl;
+cout << "Size of char: " << sizeof(c) << endl;
 bool b;
-cout << "Size of  bool: " << sizeof(b) << endl;
+cout << "Size of bool: " << sizeof(b) << endl;
 int* ix;
-cout << "Size of  int*: " << sizeof(ix) << endl;
+cout << "Size of int*: " << sizeof(ix) << endl;
 char* ch;
-cout << "Size of  char*: " << sizeof(ch) << endl;
+cout << "Size of char*: " << sizeof(ch) << endl;
 double* id;
-cout << "Size of  double*: " << sizeof(id) << endl;
+cout << "Size of double*: " << sizeof(id) << endl;
 
 }
 

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
+#include <climits>
 
 using namespace std;
 void tableDump(string (*arr)[5], string (*arr1)[4]);
@@ -12,12 +13,12 @@ int main(){
 	// the values you found while experimenting.
 
 	string nonPointers[6][5] = {
-		{"int", "4" /*size*/, "2147483647" /*max value*/, "0" /*zero as stored in hex*/,"0x1" /*one as stored in hex*/},
-		{"unsigned int", "4" /*size*/, "4294967295" /*max value*/, "0" /*zero as stored in hex*/, "0x1" /*one as stored in hex*/},
-		{"float", "4" /*size*/, "2^127" /*max value*/, "0.0" /*zero as stored in hex*/, "0x3f800000" /*one as stored in hex*/},
-		{"double", "8" /*size*/, "2^1024" /*max value*/, "0.0" /*zero as stored in hex*/, "0x3ff0000000000000" /*one as stored in hex*/},
-		{"char", "1" /*size*/, "127" /*max value*/, "'0'" /*zero as stored in hex*/, "SOH" /*one as stored in hex*/},
-		{"bool", "1" /*size*/, "1" /*max value*/, "false" /*zero as stored in hex*/, "true" /*one as stored in hex*/},
+		{"int", "4" /*size*/, "2147483647" /*max value*/, "0x00000000" /*zero as stored in hex*/,"0x00000001" /*one as stored in hex*/},
+		{"unsigned int", "4" /*size*/, "4294967295" /*max value*/, "0x00000000" /*zero as stored in hex*/, "0x00000001" /*one as stored in hex*/},
+		{"float", "4" /*size*/, "2^127" /*max value*/, "0x00000000" /*zero as stored in hex*/, "0x3f800000" /*one as stored in hex*/},
+		{"double", "8" /*size*/, "2^1024" /*max value*/, "0x0000000000000000" /*zero as stored in hex*/, "0x3ff0000000000000" /*one as stored in hex*/},
+		{"char", "1" /*size*/, "127" /*max value*/, "0x00" /*zero as stored in hex*/, "0x01" /*one as stored in hex*/},
+		{"bool", "1" /*size*/, "1" /*max value*/, "0x00" /*zero as stored in hex*/, "0x01" /*one as stored in hex*/},
 
 	};
 

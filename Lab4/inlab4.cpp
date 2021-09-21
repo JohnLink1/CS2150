@@ -24,8 +24,8 @@ int main(){
 
 	string pointers[3][4] = {
 		{"int*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0x0000000000000000" /*NULL as stored in hex*/},
-		{"char*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0x00007fffffffdb90" /*NULL as stored in hex*/},
-		{"double*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0x00007fffffffdb3a" /*NULL as stored in hex*/},
+		{"char*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0x0000000000000000" /*NULL as stored in hex*/},
+		{"double*", "8" /*size*/, "0xFFFFFFFFFFFFFFFF" /*max value*/, "0x0000000000000000" /*NULL as stored in hex*/},
 	};
 
 	tableDump(nonPointers, pointers);

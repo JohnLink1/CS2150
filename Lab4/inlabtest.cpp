@@ -31,11 +31,11 @@ bool b = false;
 str = to_string(b);
 cout << "Size of  bool: " << sizeof(b) << endl;
 cout << "Hex representation: " << hex << b << endl;
-int* ix;
+int* ix = NULL;
 cout << "Size of  int*: " << sizeof(ix) << endl;
-char* ch;
+char* ch = NULL;
 cout << "Size of  char*: " << sizeof(ch) << endl;
-double* id;
+double* id = NULL;
 cout << "Size of  double*: " << sizeof(id) << endl;
 
 }

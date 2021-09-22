@@ -43,7 +43,10 @@ string baseConverter(string num, int oBase, int fBase){
 int main(int argc, char **argv) {
 
 argc = 4;
-
+if(argv[1] == NULL || argv[2] == NULL || argv[3] == NULL || argv[4] == NULL){
+    cout << "Please provide command line input in the form [int] [STRING] [int] [int]" << endl;
+    abort();
+}
 cout << argv[1] << " has " << bitCounter(stoi(argv[1], nullptr)) << " bit(s)" << endl;
 cout << argv[2] << " (base " << argv[3] << ") = " << baseConverter(argv[2], stoi(argv[3], nullptr), stoi(argv[4], nullptr)) << " (base " << argv[4] << ")" << endl;
 

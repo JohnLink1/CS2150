@@ -11,6 +11,8 @@ union foo {
 
 int main() {
     bar.f = 1;
+    int* g = NULL;
+    cout << *g << endl;
     cout << bar.x << endl; // prints in big-endian
     return 0;
 }

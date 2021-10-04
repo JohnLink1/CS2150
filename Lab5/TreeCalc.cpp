@@ -10,6 +10,7 @@ using namespace std;
 TreeCalc::TreeCalc() {
 }
 
+
 // Destructor - frees memory
 TreeCalc::~TreeCalc() {
 }

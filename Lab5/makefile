@@ -1,21 +1,16 @@
-
+#John Link, jwl9vq@virginia.edu, 10/04/2021, makefile
 CXX=clang++ $(CXXFLAGS)
+all: TreeCalc TreeCalcTest TreeNode make
 
-target: TreeCalc.o TreeCalcTest.o TreeNode.o
-	$(CXX) TreeCalc.cpp TreeCalcTest.cpp TreeNode.cpp 
-
-TreeCalc.o: TreeCalc.cpp
+TreeCalc: TreeCalc.cpp TreeCalc.h TreeNode.h
 	$(CXX) -c TreeCalc.cpp
 
-TreeCalcTest.o: TreeCalcTest.cpp
+TreeCalcTest: TreeCalcTest.cpp TreeCalc.h TreeNode.h
 	$(CXX) -c TreeCalcTest.cpp
 
-TreeNode.o: TreeNode.cpp
+TreeNode: TreeNode.cpp TreeNode.h
 	$(CXX) -c TreeNode.cpp
 
-TreeCalc.o: TreeCalc.cpp TreeCalc.h TreeNode.h
-TreeCalcTest.o: TreeCalcTest.cpp TreeCalc.h TreeNode.h
-TreeNode.o: TreeNode.cpp TreeNode.h
 
 OBJECTS = TreeCalc.o TreeNode.o TreeCalcTest.o
 make: $(OBJECTS)

@@ -1,8 +1,8 @@
 
 CXX=clang++ $(CXXFLAGS)
 
-target: TreeCalc.o TreeCalcTest.cpp TreeNode.cpp
-	$(CXX) TreeCalc.o TreeCalcTest.cpp TreeNode.cpp -o target
+target: TreeCalc.o TreeCalcTest.o TreeNode.o
+	$(CXX) TreeCalc.cpp TreeCalcTest.cpp TreeNode.cpp 
 
 TreeCalc.o: TreeCalc.cpp
 	$(CXX) -c TreeCalc.cpp
@@ -19,5 +19,5 @@ TreeNode.o: TreeNode.cpp TreeNode.h
 
 OBJECTS = TreeCalc.o TreeNode.o TreeCalcTest.o
 make: $(OBJECTS)
-	$(CXX) $(DEBUG) $(OBJECTS) -o make
+	$(CXX) $(DEBUG) $(OBJECTS)
 	@echo "Done"

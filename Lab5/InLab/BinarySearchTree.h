@@ -44,8 +44,12 @@ private:
 
     // private helper for remove to allow recursion over different nodes. returns
     // a BinaryNode* that is assigned to the original node.
+    void insert(BinaryNode*& root, const string& x);
+    string pathTo(BinaryNode* root, const string& x) const;
+    bool find(BinaryNode* root, const string& x) const;
+    int numNodes(BinaryNode* root) const;
     BinaryNode* remove(BinaryNode*& n, const string& x);
-    // min finds the string with the smallest value in a subtree.
+    // min finds the string with thBSTPathTest.o: BSTPathTest.cpp BinarySearchTree.h BinaryNode.he smallest value in a subtree.
     string min(BinaryNode* node) const;
 
     // private helper for printTree to allow recursion over different nodes.

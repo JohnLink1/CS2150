@@ -17,6 +17,23 @@ BinarySearchTree::~BinarySearchTree() {
 // insert finds a position for x in the tree and places it there.
 void BinarySearchTree::insert(const string& x) {
     // YOUR IMPLEMENTATION GOES HERE
+    insert(root, x);
+}
+
+void BinarySearchTree::insert(BinaryNode*& root, const string& x){
+    if(root == NULL){
+        root = new BinaryNode(x);
+        return;
+    }
+    if(root->value == x){
+        return;
+    }
+    if(root->value.compare(x) > 0){
+        insert(root->left, x);
+        return;
+    }
+    if(root->value.compare(x) < 0)
+        insert(root->right, x);
 }
 
 // remove finds x's position in the tree and removes it.
@@ -75,16 +92,58 @@ BinaryNode* BinarySearchTree::remove(BinaryNode*& n, const string& x) {
 // took to get there.
 string BinarySearchTree::pathTo(const string& x) const {
     // YOUR IMPLEMENTATION GOES HERE
+    if(!find(x))
+        return "";
+    return pathTo(root, x);
+}
+
+string BinarySearchTree::pathTo(BinaryNode* root, const string& x) const {
+    if(root == NULL){
+        return "";
+    }
+    if(root->value == x){
+        return root->value;
+    }
+    if(root->value.compare(x) > 0){
+        return root->value + " " + pathTo(root->left, x);
+    }
+    if(root->value.compare(x) < 0)
+        return root->value + " " + pathTo(root->right, x);
+    return "";
 }
 
 // find determines whether or not x exists in the tree.
 bool BinarySearchTree::find(const string& x) const {
     // YOUR IMPLEMENTATION GOES HERE
+    return find(root, x);
+}
+
+bool BinarySearchTree::find(BinaryNode* root, const string& x) const {
+    if(root == NULL){
+        return false;
+    }
+    if(root->value == x){
+        return true;
+    }
+    if(root->value.compare(x) > 0){
+        return find(root->left, x);
+    }
+    if(root->value.compare(x) < 0)
+        return find(root->right, x);
+    return false;
 }
 
 // numNodes returns the total number of nodes in the tree.
 int BinarySearchTree::numNodes() const {
     // YOUR IMPLEMENTATION GOES HERE
+    return numNodes(root);
+}
+
+int BinarySearchTree::numNodes(BinaryNode* root) const {
+    if(root == NULL){
+        return 0;
+    }
+    return 1 + numNodes(root->left) + numNodes(root->right);
 }
 
 // min finds the string with the smallest value in a subtree.

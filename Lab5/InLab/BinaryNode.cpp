@@ -9,6 +9,12 @@ BinaryNode::BinaryNode() {
     right = NULL;
 }
 
+BinaryNode::BinaryNode(const string& str){
+    value = str;
+    left = NULL;
+    right = NULL;
+}
+
 BinaryNode::~BinaryNode() {
     delete left;
     delete right;

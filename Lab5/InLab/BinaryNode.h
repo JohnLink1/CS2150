@@ -6,6 +6,7 @@ using namespace std;
 
 class BinaryNode {
     BinaryNode();
+    BinaryNode(const string& str);
     ~BinaryNode();
 
     string value;

@@ -109,31 +109,36 @@ int AVLTree::numNodes(AVLNode* root) const {
 // property, namely that the balance factor of n is either -1, 0, or 1.
 void AVLTree::balance(AVLNode*& n) {
     // YOUR IMPLEMENTATION GOES HERE
-    if(numNodes(n) < 3)
-        return;
     if(balanceFactor(n) == 2){
         if(balanceFactor(n->right) < 0){
-            n = rotateLeft(n);
+            n->right = rotateRight(n->right);
+            cout << "lright" << endl;
         }
-        n = rotateRight(n);
+        n = rotateLeft(n);
+        cout << "left" << endl;
     }
     else if(balanceFactor(n) == -2){
         if(balanceFactor(n->left) > 0){
-            n = rotateRight(n);
+            n->left = rotateLeft(n->left);
+            cout << "rleft" << endl;
         }
-        n = rotateLeft(n);
+        n = rotateRight(n);
+        cout << "right" << endl;
     }
 }
 
 int AVLTree::balanceFactor(AVLNode* x) const{
+    if(x == NULL){
+        return 0;
+    }
     if(x->left != NULL && x->right != NULL){
         return depth(x->right) - depth(x->left);
     }
     if(x->left != NULL && numNodes(x->left) > 1)
-        return 2;
+        return -2;
 
     if(x->right != NULL && numNodes(x->right) > 1)
-        return -2;
+        return 2;
     return 0;
 }
 

@@ -18,8 +18,9 @@ AVLTree::~AVLTree() {
 // as necessary.
 void AVLTree::insert(const string& x) {
     // YOUR IMPLEMENTATION GOES HERE
+    if(find(x))
+        return;
     insert(root, x, 0);
-    balance(root);
 }
 
 void AVLTree::insert(AVLNode*& root, const string& x, int height){
@@ -27,17 +28,15 @@ void AVLTree::insert(AVLNode*& root, const string& x, int height){
         root = new AVLNode();
         root->value = x;
         root->height = height;
-        return;
     }
-    if(root->value == x){
-        return;
-    }
-    if(root->value.compare(x) > 0){
+    else if(root->value.compare(x) > 0){
         insert(root->left, x, height+1);
-        return;
+        balance(root);
     }
-    if(root->value.compare(x) < 0)
+    else if(root->value.compare(x) < 0){
         insert(root->right, x, height+1);
+        balance(root);
+    }
 }
 
 // remove finds x's position in the tree and removes it, rebalancing as
@@ -60,7 +59,7 @@ string AVLTree::pathTo(AVLNode* root, const string& x) const{
     if(root == NULL){
         return "";
     }
-    if(root->value == x){
+    if(root->value.compare(x) == 0){
         return root->value;
     }
     if(root->value.compare(x) > 0){
@@ -109,7 +108,7 @@ int AVLTree::numNodes(AVLNode* root) const {
 // property, namely that the balance factor of n is either -1, 0, or 1.
 void AVLTree::balance(AVLNode*& n) {
     // YOUR IMPLEMENTATION GOES HERE
-    if(balanceFactor(n) == 2){
+    if(balanceFactor(n) >= 2){
         if(balanceFactor(n->right) < 0){
             n->right = rotateRight(n->right);
             cout << "lright" << endl;
@@ -117,7 +116,7 @@ void AVLTree::balance(AVLNode*& n) {
         n = rotateLeft(n);
         cout << "left" << endl;
     }
-    else if(balanceFactor(n) == -2){
+    else if(balanceFactor(n) <= -2){
         if(balanceFactor(n->left) > 0){
             n->left = rotateLeft(n->left);
             cout << "rleft" << endl;
@@ -132,6 +131,7 @@ int AVLTree::balanceFactor(AVLNode* x) const{
         return 0;
     }
     if(x->left != NULL && x->right != NULL){
+        //cout << depth(x->right) - depth(x->left) << endl;
         return depth(x->right) - depth(x->left);
     }
     if(x->left != NULL && numNodes(x->left) > 1)
@@ -145,6 +145,8 @@ int AVLTree::balanceFactor(AVLNode* x) const{
 int AVLTree::depth(AVLNode* x) const{
     if(x == NULL)
         return 0;
+    if(x->left == NULL && x->right == NULL)
+        return 1;
     return max(depth(x->left), depth(x->right)) + 1;
 }
 

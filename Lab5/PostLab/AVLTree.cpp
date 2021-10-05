@@ -111,18 +111,18 @@ void AVLTree::balance(AVLNode*& n) {
     if(balanceFactor(n) >= 2){
         if(balanceFactor(n->right) < 0){
             n->right = rotateRight(n->right);
-            cout << "lright" << endl;
+            //cout << "lright" << endl;
         }
         n = rotateLeft(n);
-        cout << "left" << endl;
+        //cout << "left" << endl;
     }
     else if(balanceFactor(n) <= -2){
         if(balanceFactor(n->left) > 0){
             n->left = rotateLeft(n->left);
-            cout << "rleft" << endl;
+            //cout << "rleft" << endl;
         }
         n = rotateRight(n);
-        cout << "right" << endl;
+        //cout << "right" << endl;
     }
 }
 

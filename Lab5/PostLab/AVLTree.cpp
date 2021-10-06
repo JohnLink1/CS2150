@@ -148,7 +148,7 @@ int AVLTree::depth(AVLNode* x) const{
     if(x == NULL)
         return 0;
     if(x->left == NULL && x->right == NULL)
-        return 1;
+        return 0;
     return max(depth(x->left), depth(x->right)) + 1;
 }
 

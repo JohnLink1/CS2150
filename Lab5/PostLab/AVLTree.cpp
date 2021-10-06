@@ -126,6 +126,7 @@ void AVLTree::balance(AVLNode*& n) {
         n = rotateRight(n);
         //cout << "right" << endl;
     }
+     printTree();
 }
 
 int AVLTree::balanceFactor(AVLNode* x) const{
@@ -149,8 +150,8 @@ AVLNode* AVLTree::rotateLeft(AVLNode*& n) {
     AVLNode* x = n->right;
     n->right = x->left;
     x->left = n;
-    x->height = depth(x);
-    n->height = depth(n);
+    x->height += 1;
+    n->height -= 1;
     return x;
 }
 
@@ -160,8 +161,8 @@ AVLNode* AVLTree::rotateRight(AVLNode*& n) {
     AVLNode* x = n->left;
     n->left = x->right;
     x->right = n;
-    x->height = depth(x);
-    n->height = depth(n);
+    x->height += 1;
+    n->height -= 1;
     return x;
 }
 

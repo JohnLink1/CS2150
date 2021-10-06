@@ -129,19 +129,10 @@ void AVLTree::balance(AVLNode*& n) {
 }
 
 int AVLTree::balanceFactor(AVLNode* x) const{
-    if(x == NULL){
+    if(x == NULL)
         return 0;
-    }
-    if(x->left != NULL && x->right != NULL){
-        //cout << depth(x->right) - depth(x->left) << endl;
-        return height(x->right) - height(x->left);
-    }
-    if(x->left != NULL && numNodes(x->left) > 1)
-        return -2;
-
-    if(x->right != NULL && numNodes(x->right) > 1)
-        return 2;
-    return 0;
+    //cout << depth(x->right) - depth(x->left) << endl;
+    return height(x->right) - height(x->left);
 }
 
 int AVLTree::depth(AVLNode* x) const{

@@ -54,7 +54,7 @@ private:
 
     // private helper for remove to allow recursion over different nodes. returns
     // an AVLNode* that is assigned to the original node.
-    void insert(AVLNode*& root, const string& x, int height);
+    void insert(AVLNode*& root, const string& x);
     string pathTo(AVLNode* root, const string& x) const;
     bool find(AVLNode* root, const string& x) const;
     int numNodes(AVLNode* root) const;

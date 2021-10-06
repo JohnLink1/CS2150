@@ -20,21 +20,23 @@ void AVLTree::insert(const string& x) {
     // YOUR IMPLEMENTATION GOES HERE
     if(find(x))
         return;
-    insert(root, x, 0);
+    insert(root, x);
 }
 
-void AVLTree::insert(AVLNode*& root, const string& x, int height){
+void AVLTree::insert(AVLNode*& root, const string& x){
     if(root == NULL){
         root = new AVLNode();
         root->value = x;
-        root->height = height;
+        root->height = 0;
     }
     else if(root->value.compare(x) > 0){
-        insert(root->left, x, height+1);
+        insert(root->left, x);
+        root->height = balanceFactor(root);
         balance(root);
     }
     else if(root->value.compare(x) < 0){
-        insert(root->right, x, height+1);
+        insert(root->right, x);
+        root->height = balanceFactor(root);
         balance(root);
     }
 }
@@ -108,16 +110,16 @@ int AVLTree::numNodes(AVLNode* root) const {
 // property, namely that the balance factor of n is either -1, 0, or 1.
 void AVLTree::balance(AVLNode*& n) {
     // YOUR IMPLEMENTATION GOES HERE
-    if(balanceFactor(n) >= 2){
-        if(balanceFactor(n->right) < 0){
+    if(n->height >= 2){
+        if(n->right->height < 0){
             n->right = rotateRight(n->right);
             //cout << "lright" << endl;
         }
         n = rotateLeft(n);
         //cout << "left" << endl;
     }
-    else if(balanceFactor(n) <= -2){
-        if(balanceFactor(n->left) > 0){
+    else if(n->height <= -2){
+        if(n->left->height > 0){
             n->left = rotateLeft(n->left);
             //cout << "rleft" << endl;
         }

@@ -110,7 +110,7 @@ int AVLTree::numNodes(AVLNode* root) const {
 // property, namely that the balance factor of n is either -1, 0, or 1.
 void AVLTree::balance(AVLNode*& n) {
     // YOUR IMPLEMENTATION GOES HERE
-    if(balanceFactor(n) >= 2){
+    if(balanceFactor(n) == 2){
         if(balanceFactor(n->right) < 0){
             n->right = rotateRight(n->right);
             //cout << "lright" << endl;
@@ -118,7 +118,7 @@ void AVLTree::balance(AVLNode*& n) {
         n = rotateLeft(n);
         //cout << "left" << endl;
     }
-    else if(balanceFactor(n) <= -2){
+    else if(balanceFactor(n) == -2){
         if(balanceFactor(n->left) > 0){
             n->left = rotateLeft(n->left);
             //cout << "rleft" << endl;
@@ -126,7 +126,7 @@ void AVLTree::balance(AVLNode*& n) {
         n = rotateRight(n);
         //cout << "right" << endl;
     }
-     printTree();
+     //printTree();
 }
 
 int AVLTree::balanceFactor(AVLNode* x) const{
@@ -150,8 +150,8 @@ AVLNode* AVLTree::rotateLeft(AVLNode*& n) {
     AVLNode* x = n->right;
     n->right = x->left;
     x->left = n;
-    x->height += 1;
-    n->height -= 1;
+    x->height = depth(x);
+    n->height = depth(n);
     return x;
 }
 
@@ -161,8 +161,8 @@ AVLNode* AVLTree::rotateRight(AVLNode*& n) {
     AVLNode* x = n->left;
     n->left = x->right;
     x->right = n;
-    x->height += 1;
-    n->height -= 1;
+    x->height = depth(x);
+    n->height = depth(n);
     return x;
 }
 

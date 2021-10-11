@@ -1,16 +1,19 @@
 //John Link, jwl9vq@virginia.edu, 10/10/21, wordPuzzle.cpp
 #include <iostream>
 #include <string>
+#include <fstream>
+#include "hashTable.h"
 
 using namespace std;
 
 #define MAXROWS 500
 #define MAXCOLS 500
 char grid[MAXROWS][MAXCOLS];
-
+unsigned long long gen[23] = {1, 7, 49, 343, 2401, 16807, 117649, 823543, 5764801, 40353607, 282475249, 1977326743, 13841287201, 96889010407, 678223072849, 4747561509943, 33232930569601, 232630513987207, 1628413597910449, 11398895185373144, 79792266297612000, 558545864083284000, 3909821048582988000};
 void addWordstoDict();
 string getWordInGrid(int startRow, int startCol, int dir, int len, int numRws, int numCols);
 bool readInGrid(string filename, int& rows, int& cols);
+int getKey(string s);
 
 
 int main(int argc, char **args){
@@ -19,48 +22,47 @@ if(args[1] == NULL || args[2] == NULL){
     cout << "Invalid arguments given should be: output dictionary.txt grid.txt" << endl;
     abort();
 }
+HashTable t(20000);
 string dicfile = args[1];
 string gridfile = args[2];
 //set cin file to dictionary
+string instr;
+ofstream file;
+file.open(dicfile);
 while(cin.good()){
-    
+    cin >> instr;
+    if(instr.length() > 2){
+        t.insert(getKey(instr), instr);
+    }
 }
+file.close();
+
+file.open(gridfile);
 
 //set cin file to grid
-string instr;
 string gridConts;
 cin >> instr;
 int rows = stoi(instr);
 cin >> instr;
 int cols = stoi(instr);
-cint >> gridConts;
+cin >> gridConts;
     
+file.close();
+
+readInGrid(gridConts, rows, cols);
+
 
 }
 
-bool readInGrid(string filename, int& rows, int& cols) {
-    // try to open the file
-    ifstream file(filename);
-    // upon an error, return false
-    if (!file.is_open()) {
-        return false;
+int getKey(string s){
+    int k = 0;
+    for(int x = 0; x < s.length(); x++){
+        k += s.at(x) * gen[x];
     }
+    return k;
+}
 
-    // first comes the number of rows
-    file >> rows;
-    cout << "There are " << rows << " rows." << endl;
-
-    // then the columns
-    file >> cols;
-    cout << "There are " << cols << " cols." << endl;
-
-    // and finally the grid itself
-    string data;
-    file >> data;
-
-    // close the file
-    file.close();
-
+bool readInGrid(string data, int& rows, int& cols) {
     // convert the string read in to the 2-D grid format into the
     // grid[][] array.
     // In the process, we'll print the grid to the screen as well.

@@ -46,11 +46,11 @@ bool HashTable::find(string value){
 }
 
 int HashTable::hash(string value) const{
-    int k = 0;
+    unsigned int k = 0;
     for(int x = 0; x < value.length(); x++){
         k += (int)value.at(x) * offsets[x];
     }
-    return k % num_ele;
+    return (int)(k % num_ele);
 }
 
 void HashTable::remove(string value){

@@ -9,12 +9,9 @@ using namespace std;
 #define MAXROWS 500
 #define MAXCOLS 500
 char grid[MAXROWS][MAXCOLS];
-unsigned long long gen[23] = {1, 7, 49, 343, 2401, 16807, 117649, 823543, 5764801, 40353607, 282475249, 1977326743, 13841287201, 96889010407, 678223072849, 4747561509943, 33232930569601, 232630513987207, 1628413597910449, 11398895185373144, 79792266297612000, 558545864083284000, 3909821048582988000};
-void addWordstoDict();
 string getWordInGrid(int startRow, int startCol, int dir, int len, int numRws, int numCols);
 bool readInGrid(string filename, int& rows, int& cols);
-int getKey(string s);
-
+string getDir(int x);
 
 int main(int argc, char **args){
 argc = 2;
@@ -22,44 +19,51 @@ if(args[1] == NULL || args[2] == NULL){
     cout << "Invalid arguments given should be: output dictionary.txt grid.txt" << endl;
     abort();
 }
-HashTable t(20000);
+HashTable* t = new HashTable();
 string dicfile = args[1];
 string gridfile = args[2];
 //set cin file to dictionary
+cout << "pre add dict" << endl;
 string instr;
-ofstream file;
-file.open(dicfile);
+ifstream file;
+file.open("words.txt");
 while(cin.good()){
-    cin >> instr;
+    file >> instr;
+    cout << instr << endl;
     if(instr.length() > 2){
-        t.insert(getKey(instr), instr);
+        t->insert(instr);
     }
 }
 file.close();
-
+cout << "added to dict" << endl;
 file.open(gridfile);
 
 //set cin file to grid
 string gridConts;
-cin >> instr;
+file >> instr;
 int rows = stoi(instr);
-cin >> instr;
+file >> instr;
 int cols = stoi(instr);
 cin >> gridConts;
     
 file.close();
 
 readInGrid(gridConts, rows, cols);
-
-
-}
-
-int getKey(string s){
-    int k = 0;
-    for(int x = 0; x < s.length(); x++){
-        k += s.at(x) * gen[x];
+string word = "";
+    for(int x = 0; x < rows; x++){
+        for(int y = 0; y < cols; y++){
+            for(int i = 0; i < 8; i++){
+                for(int j = 3; j < 22; j++){
+                    word = getWordInGrid(x, y, i, j, rows, cols);
+                    if(t->find(word)){
+                        cout << getDir(i) << "\t(" << x << ", " << y << "):\t" << word << endl;;
+                    }
+                }
+            }
+        }
     }
-    return k;
+
+
 }
 
 bool readInGrid(string data, int& rows, int& cols) {
@@ -75,6 +79,27 @@ bool readInGrid(string data, int& rows, int& cols) {
         cout << endl;
     }
     return true;
+}
+
+string getDir(int x){
+        switch (x) { // assumes grid[0][0] is in the upper-left
+            case 0:
+                return "N";
+            case 1:
+                return "NE";
+            case 2:
+                return "E";
+            case 3:
+                return "SE";
+            case 4:
+                return "S";
+            case 5:
+                return "E";
+            case 6:
+                return "W";
+            case 7:
+                return "NW";
+        }
 }
 
 string getWordInGrid (int startRow, int startCol, int dir, int len,

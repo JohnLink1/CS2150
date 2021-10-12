@@ -9,7 +9,7 @@
 using namespace std;
 
 HashTable::HashTable(){
-    num_ele = 200;
+    num_ele = 10000;
     table = new vector<string*>(num_ele);
     for(int x = 0; x < 30; x++){
         offsets[x] = (int)pow(37, x);
@@ -35,6 +35,7 @@ void HashTable::insert(string value){
         //vector<string>::const_iterator it = table->begin();
         table->insert(table->begin() + h - 1, new string(value));
     }
+    *table->at(h) = *table->at(h) + value;
 }
 
 bool HashTable::find(string value){
@@ -43,6 +44,15 @@ bool HashTable::find(string value){
         return true;
     }
     return false;
+}
+
+string HashTable::retrieve(string value){
+    int h = hash(value);
+    if(find(value)){
+        string str = *table->at(h);
+	return str.substr(str.find(value), str.length() + str.find(value));
+    }
+    return NULL;
 }
 
 int HashTable::hash(string value) const{

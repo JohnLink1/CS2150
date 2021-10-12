@@ -17,6 +17,7 @@ public:
     void insert(string value);
     void remove(string value);
     bool find(string value);
+    string retrieve(string value);
 
 private:
     vector<string*>* table;

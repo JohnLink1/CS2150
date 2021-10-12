@@ -26,8 +26,8 @@ string gridfile = args[2];
 cout << "pre add dict" << endl;
 string instr;
 ifstream file;
-file.open("words.txt");
-while(cin.good()){
+file.open(dicfile);
+while(file.good()){
     file >> instr;
     cout << instr << endl;
     if(instr.length() > 2 && instr.length() < 25){
@@ -44,16 +44,20 @@ file >> instr;
 int rows = stoi(instr);
 file >> instr;
 int cols = stoi(instr);
-cin >> gridConts;
+file >> gridConts;
     
 file.close();
-
+cout << "read grid file" << endl;
 readInGrid(gridConts, rows, cols);
+cout << "created grid" << endl;
 string word = "";
     for(int x = 0; x < rows; x++){
         for(int y = 0; y < cols; y++){
             for(int i = 0; i < 8; i++){
                 for(int j = 3; j < 22; j++){
+                    if(word == getWordInGrid(x, y, i, j, rows, cols)){
+                        break;
+                    }
                     word = getWordInGrid(x, y, i, j, rows, cols);
                     if(t->find(word)){
                         cout << getDir(i) << "\t(" << x << ", " << y << "):\t" << word << endl;;

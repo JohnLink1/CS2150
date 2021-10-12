@@ -30,7 +30,7 @@ file.open("words.txt");
 while(cin.good()){
     file >> instr;
     cout << instr << endl;
-    if(instr.length() > 2){
+    if(instr.length() > 2 && instr.length() < 25){
         t->insert(instr);
     }
 }

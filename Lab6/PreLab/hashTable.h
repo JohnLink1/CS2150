@@ -20,7 +20,7 @@ public:
     string retrieve(string value);
 
 private:
-    vector<string*>* table;
+    vector<string>* table;
     unsigned int offsets[30];
     int num_ele;
     int hash(string value) const;

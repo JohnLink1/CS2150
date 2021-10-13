@@ -8,19 +8,24 @@
 
 using namespace std;
 
-HashTable::HashTable(){
-    num_ele = 503;
-    table = new vector<string*>(num_ele);
+HashTable::HashTable() : num_ele(1009){
+    table = new vector<string>(num_ele);
     for(int x = 0; x < 30; x++){
-        offsets[x] = (int)pow(37, x);
+        offsets[x] = (unsigned int)pow(37, x);
+    }
+    for(int x = 0; x < num_ele; x++){
+        table->push_back("");
     }
 }
 
 HashTable::HashTable(int x){
     num_ele = x;
-    table = new vector<string*>(num_ele);
+    table = new vector<string>(num_ele);
     for(int x = 0; x < 30; x++){
-        offsets[x] = (int)pow(37, x);
+        offsets[x] = (unsigned int)pow(37, x);
+    }
+    for(int x = 0; x < num_ele; x++){
+        table->push_back("");
     }
 }
 
@@ -31,17 +36,12 @@ HashTable::~HashTable(){
 
 void HashTable::insert(string value){
     int h = hash(value);
-    if(!find(value)){
-        //vector<string>::const_iterator it = table->begin();
-        table->insert(table->begin() + h - 1, new string(value + ","));
-    }
-    else
-        *table->at(h) = value + "," + *table->at(h);
+    table->at(h) = "," + value + "," + table->at(h);
 }
 
 bool HashTable::find(string value){
     int h = hash(value);
-    if(table->at(h) != NULL){
+    if(table->at(h) != "" && table->at(h).find("," + value + ",") != string::npos){
         return true;
     }
     return false;
@@ -50,7 +50,7 @@ bool HashTable::find(string value){
 string HashTable::retrieve(string value){
     int h = hash(value);
     if(find(value)){
-        string str = *table->at(h);
+        string str = table->at(h);
 	return str.substr(str.find(value), str.length() + str.find(value));
     }
     return NULL;
@@ -59,14 +59,16 @@ string HashTable::retrieve(string value){
 int HashTable::hash(string value) const{
     unsigned int k = 0;
     for(int x = 0; x < value.length(); x++){
-        k += (int)value.at(x) * offsets[x];
+        k += ((unsigned int)value.at(x)) * offsets[x];
     }
     return (int)(k % num_ele);
 }
 
 void HashTable::remove(string value){
     int h = hash(value);
-    if(!find(value)){
-        //vector<string>::const_iterator it = table->begin();
+    if(find(value)){
+        string str = table->at(h);
+        str = str.substr(0, str.find("," + value)) + str.substr(str.find(value) + str.length());
+        table->at(h) = str;
     }
 }

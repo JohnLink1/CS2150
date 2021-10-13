@@ -23,19 +23,17 @@ HashTable* t = new HashTable();
 string dicfile = args[1];
 string gridfile = args[2];
 //set cin file to dictionary
-cout << "pre add dict" << endl;
 string instr;
 ifstream file;
 file.open(dicfile);
 while(file.good()){
     file >> instr;
-    cout << instr << endl;
     if(instr.length() > 2 && instr.length() < 25){
         t->insert(instr);
     }
 }
 file.close();
-cout << "added to dict" << endl;
+//cout << "added to dict" << endl;
 file.open(gridfile);
 
 //set cin file to grid
@@ -47,26 +45,28 @@ int cols = stoi(instr);
 file >> gridConts;
     
 file.close();
-cout << "read grid file" << endl;
+//cout << "read grid file" << endl;
 readInGrid(gridConts, rows, cols);
-cout << "created grid" << endl;
+//cout << "created grid" << endl;
 string word = "";
+int count = 0;
     for(int x = 0; x < rows; x++){
         for(int y = 0; y < cols; y++){
             for(int i = 0; i < 8; i++){
-                for(int j = 3; j < 22; j++){
+                for(int j = 3; j < 23; j++){
                     if(word == getWordInGrid(x, y, i, j, rows, cols)){
                         break;
                     }
                     word = getWordInGrid(x, y, i, j, rows, cols);
-                    if(t->find(word)){
-                        cout << getDir(i) << "\t(" << x << ", " << y << "):\t" << word << endl;;
+                    if(t->find(word) && word.length() > 2){
+                        cout << getDir(i) << "(" << x << ", " << y << "):       " << word << endl;
+                        count++;
                     }
                 }
             }
         }
     }
-
+cout << count << " words found" << endl;
 
 }
 
@@ -78,9 +78,7 @@ bool readInGrid(string data, int& rows, int& cols) {
     for (int r = 0; r < rows; r++) {
         for (int c = 0; c < cols; c++) {
             grid[r][c] = data[pos++];
-            cout << grid[r][c];
         }
-        cout << endl;
     }
     return true;
 }
@@ -88,19 +86,19 @@ bool readInGrid(string data, int& rows, int& cols) {
 string getDir(int x){
         switch (x) { // assumes grid[0][0] is in the upper-left
             case 0:
-                return "N";
+                return "N ";
             case 1:
                 return "NE";
             case 2:
-                return "E";
+                return "E ";
             case 3:
                 return "SE";
             case 4:
-                return "S";
+                return "S ";
             case 5:
-                return "E";
+                return "SE";
             case 6:
-                return "W";
+                return "W ";
             case 7:
                 return "NW";
         }

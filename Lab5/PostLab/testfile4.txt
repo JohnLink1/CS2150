@@ -1,0 +1,73 @@
+I A
+I computer
+I once
+I beat
+I me
+I at
+I chess,
+I but
+I it
+I was
+I no
+I match
+I for
+I me
+I at
+I kick
+I boxing.
+L kick
+R A
+L kick
+R beat
+L beat
+L at
+Expected:
+AVL path: computer me it match kick
+AVL path: computer me it match kick
+AVL path: 
+AVL path: computer boxing. at
+AVL numNodes: 13
+Received:
+AVL path: computer me match it kick
+AVL path: computer me match it kick
+AVL path: 
+AVL path: match computer but boxing. at
+AVL numNodes: 13
+No Right Subtree Test (0.0/1.0)
+Failed, incorrect output
+Input:
+I Zebras
+I are
+I single
+I hoofed
+I animals
+I that
+I are
+I native
+I to
+I Africa
+I and
+I are
+I very
+I closely
+I related
+I to
+I horses
+I and
+I donkeys;
+I in
+I fact,
+I they
+I are
+I in
+I the
+I same
+I genus,
+I Equus.
+R that
+L the
+R Africa
+L Equus.
+L genus,
+R donkeys;
+L genus,

@@ -104,6 +104,7 @@ string getDir(int x){
             case 7:
                 return "NW";
         }
+    return "";
 }
 
 string getWordInGrid (int startRow, int startCol, int dir, int len,

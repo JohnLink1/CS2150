@@ -59,7 +59,7 @@ int count = 0;
                     }
                     word = getWordInGrid(x, y, i, j, rows, cols);
                     if(t->find(word) && word.length() > 2){
-                        cout << getDir(i) << "(" << x << ", " << y << "):       " << word << endl;
+                        cout << getDir(i) << "(" << x << ", " << y << "):\t" << word << endl;
                         count++;
                     }
                 }

@@ -18,6 +18,7 @@ public:
     void remove(string value);
     bool find(string value);
     string retrieve(string value);
+    string at(int idx);
 
 private:
     vector<string>* table;

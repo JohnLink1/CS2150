@@ -56,6 +56,10 @@ string HashTable::retrieve(string value){
     return NULL;
 }
 
+string HashTable::at(int idx){
+    return table->at(idx);
+}
+
 int HashTable::hash(string value) const{
     unsigned int k = 0;
     for(int x = 0; x < value.length(); x++){

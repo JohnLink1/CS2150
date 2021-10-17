@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include "hashTable.h"
+#include "timer.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ if(args[1] == NULL || args[2] == NULL){
     cout << "Invalid arguments given should be: output dictionary.txt grid.txt" << endl;
     abort();
 }
-HashTable* t = new HashTable();
+HashTable* table = new HashTable();
 string dicfile = args[1];
 string gridfile = args[2];
 //set cin file to dictionary
@@ -29,7 +30,7 @@ file.open(dicfile);
 while(file.good()){
     file >> instr;
     if(instr.length() > 2 && instr.length() < 25){
-        t->insert(instr);
+        table->insert(instr);
     }
 }
 file.close();
@@ -48,6 +49,9 @@ file.close();
 //cout << "read grid file" << endl;
 readInGrid(gridConts, rows, cols);
 //cout << "created grid" << endl;
+timer t;
+t.start();
+
 string word = "";
 int count = 0;
     for(int x = 0; x < rows; x++){
@@ -58,7 +62,7 @@ int count = 0;
                         break;
                     }
                     word = getWordInGrid(x, y, i, j, rows, cols);
-                    if(t->find(word) && word.length() > 2){
+                    if(table->find(word) && word.length() > 2){
                         cout << getDir(i) << "(" << x << ", " << y << "):\t" << word << endl;
                         count++;
                     }
@@ -66,7 +70,9 @@ int count = 0;
             }
         }
     }
+t.stop();
 cout << count << " words found" << endl;
+cout << (t.getTime() * 1000) << endl;
 
 }
 

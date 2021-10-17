@@ -11,7 +11,7 @@ make: $(OBJECTS)
 	$(CXX) $(DEBUG) $(OBJECTS)
 	@echo "Done"
 
-wordPuzzle.o: wordPuzzle.cpp
+wordPuzzle.o: wordPuzzle.cpp timer.h hashTable.h
 	$(CXX) -c wordPuzzle.cpp
 
 timer.o: timer.cpp timer.h

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-HashTable::HashTable() : num_ele(1009){
+HashTable::HashTable() : num_ele(54779){
     table = new vector<string>(num_ele);
     for(int x = 0; x < 30; x++){
         offsets[x] = (unsigned int)pow(37, x);

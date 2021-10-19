@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>
 #include "hashTable.h"
+#include "timer.h"
 
 using namespace std;
 
@@ -44,9 +45,12 @@ int cols = stoi(instr);
 file >> gridConts;
     
 file.close();
+timer time;
+
 //cout << "read grid file" << endl;
 readInGrid(gridConts, rows, cols);
 //cout << "created grid" << endl;
+time.start();
 string word = "";
 string output = "";
 int sameD = -1;
@@ -71,9 +75,11 @@ int count = 0;
             }
         }
     }
+time.stop();
 cout << output << endl;
 cout << count << " words found" << endl;
 
+cout << time.getTime() * 1000 << endl;
 }
 
 bool readInGrid(string data, int& rows, int& cols) {

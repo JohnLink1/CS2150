@@ -22,4 +22,4 @@ RUN5=`./a.out $DICT $GRID | tail -1`
 SUM=`bc <<<"scale=3 ; $RUN1 + $RUN2 + $RUN3 + $RUN4 + $RUN5"`
 
 #print out average time
-echo `bc <<<"scale=3 ; $SUM / 5"`
+echo `bc <<<"scale=0 ; $SUM / 5"`

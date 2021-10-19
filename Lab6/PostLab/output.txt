@@ -1,5 +1,5 @@
 
-3877 words found
+3878 words found
 E (1, 2):	sou
 E (1, 53):	etc
 E (1, 55):	coy
@@ -2453,6 +2453,7 @@ SE(102, 18):	flu
 SE(102, 23):	pot
 SE(102, 37):	ice
 SE(103, 51):	shah
+SE(103, 67):	hoi
 SE(104, 19):	awe
 SE(104, 42):	vie
 SE(105, 3):	scan

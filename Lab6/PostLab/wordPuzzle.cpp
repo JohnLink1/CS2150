@@ -61,7 +61,10 @@ int count = 0;
                     sameD = i;
                     word = getWordInGrid(x, y, i, j, rows, cols);
                     if(t->find(word)){
-                        output += getDir(i) + "(" + to_string(x) + ", " + to_string(y) + "):\t" + word + "\n";
+                        if(output == "")
+                            output += getDir(i) + "(" + to_string(x) + ", " + to_string(y) + "):\t" + word;
+                        else
+                            output += "\n" + getDir(i) + "(" + to_string(x) + ", " + to_string(y) + "):\t" + word;
                         count++;
                     }
                 }

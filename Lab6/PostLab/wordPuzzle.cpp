@@ -82,7 +82,7 @@ time.stop();
 cout << output << endl;
 cout << count << " words found" << endl;
 
-//cout << time.getTime() * 1000 << endl;
+cout << time.getTime() * 1000 << endl;
 delete t;
 t = NULL;
 }

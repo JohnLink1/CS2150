@@ -20,6 +20,8 @@ if(args[1] == NULL || args[2] == NULL){
     cout << "Invalid arguments given should be: output dictionary.txt grid.txt" << endl;
     abort();
 }
+//timer time;
+//time.start();
 HashTable* t = new HashTable();
 string dicfile = args[1];
 string gridfile = args[2];
@@ -45,12 +47,10 @@ int cols = stoi(instr);
 file >> gridConts;
     
 file.close();
-timer time;
 
 //cout << "read grid file" << endl;
 readInGrid(gridConts, rows, cols);
 //cout << "created grid" << endl;
-time.start();
 string word = "";
 string newWord = "";
 string output = "";
@@ -78,7 +78,7 @@ int count = 0;
             }
         }
     }
-time.stop();
+//time.stop();
 cout << output << endl;
 cout << count << " words found" << endl;
 

@@ -29,7 +29,7 @@ ifstream file;
 file.open(dicfile);
 while(file.good()){
     file >> instr;
-    if(instr.length() > 2 && instr.length() < 25){
+    if(instr.length() > 2 && instr.length() < 23){
         t->insert(instr);
     }
 }
@@ -52,6 +52,7 @@ readInGrid(gridConts, rows, cols);
 //cout << "created grid" << endl;
 time.start();
 string word = "";
+string newWord = "";
 string output = "";
 int sameD = -1;
 int count = 0;
@@ -59,16 +60,18 @@ int count = 0;
         for(int y = 0; y < cols; y++){
             for(int i = 0; i < 8; i++){
                 for(int j = 3; j < 23; j++){
-                    if(sameD == i && word == getWordInGrid(x, y, i, j, rows, cols)){
+                    newWord = getWordInGrid(x, y, i, j, rows, cols);
+                    if(sameD == i && word == newWord){
                         break;
                     }
                     sameD = i;
-                    word = getWordInGrid(x, y, i, j, rows, cols);
+                    word = newWord;
                     if(t->find(word)){
                         if(output == "")
                             output += getDir(i) + "(" + to_string(x) + ", " + to_string(y) + "):\t" + word;
                         else
                             output += "\n" + getDir(i) + "(" + to_string(x) + ", " + to_string(y) + "):\t" + word;
+                        
                         count++;
                     }
                 }
@@ -79,7 +82,9 @@ time.stop();
 cout << output << endl;
 cout << count << " words found" << endl;
 
-cout << time.getTime() * 1000 << endl;
+//cout << time.getTime() * 1000 << endl;
+delete t;
+t = NULL;
 }
 
 bool readInGrid(string data, int& rows, int& cols) {

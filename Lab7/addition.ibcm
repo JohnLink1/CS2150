@@ -22,7 +22,7 @@ C00A 000         jmp     start
 5003 015         add     v3
 4004 016         store   count
 3004 017         load    count
-D001 018         jmpe    zxit
+D01C 018         jmpe    zxit
 3004 019         load    count
 1800 01A         printH
 0000 01B         halt

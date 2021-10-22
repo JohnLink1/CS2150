@@ -1,0 +1,26 @@
+C00A 000         jmp     start
+0000 001   v1    dw      0
+0000 002   v2    dw      0
+0000 003   v3    dw      0
+0000 004   count dw      0
+0000 005   zero  dw      0
+0000 006
+0000 007
+0000 008
+0000 009
+1000 00A   start readH
+4001 00B         store   v1
+1000 00C         readH
+4002 00D         store   v2
+1000 00E         readH
+4003 00F         store   v3
+3005 010         load    zero
+4004 011         store   count
+3004 012         load    count
+5001 013         add     v1
+5002 014         add     v2
+5003 015         add     v3
+4004 016         store   count
+3004 017         load    count
+1800 018         printH
+0000 019         halt

@@ -21,13 +21,13 @@ C00A 000         jmp     start
 5002 014         add     v2
 5003 015         add     v3
 4004 016         store   count
-3004 017         load    count
 D01C 018         jmpe    zxit
 C00A 019         jmp     start
 3001 01A   zxit  load    v1
-1800 01B         printH
-3002 01C         load    v2
-1800 01D         printH
-3003 01E         load    v3
-1800 01F         printH
-0000 020         halt
+3001 01B         load    v1
+1800 01C         printH
+3002 01D         load    v2
+1800 01E         printH
+3003 01F         load    v3
+1800 020         printH
+0000 021         halt

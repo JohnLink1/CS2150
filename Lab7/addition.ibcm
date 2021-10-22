@@ -19,7 +19,7 @@ C00A 000         jmp     start
 5002 012         add     v2
 5003 013         add     v3
 1800 014         printH
-D01A 015         jmpe    zxit
+D017 015         jmpe    zxit
 C00A 016         jmp     start
 3001 017   zxit  load    v1
 1800 018         printH

@@ -3,11 +3,7 @@ C00A 000         jmp     start
 4000 002   arl   dw      4000
 3000 003   arr   dw      3000
 0000 004   idx   dw      0
-<<<<<<< HEAD
 0050 005   a     dw      50
-=======
-0040 005   a     dw      40
->>>>>>> 256a7d4cbe2262f29a57505ed3cc9d2cff76c365
 0000 006   zero  dw      0
 0001 007   one   dw      1
 0000 008   value dw      0
@@ -16,7 +12,6 @@ C00A 000         jmp     start
 4001 00B         store   size
 3001 00C   rlop  load    size   loop to read in values for the array
 6004 00D         sub     idx
-<<<<<<< HEAD
 E020 00E         jmpl    xit    if idx >= size
 D020 00F         jmpe    xit
 B000 010         nop
@@ -76,50 +71,3 @@ B000 045   val   nop
 1800 046         printH
 C039 047         jmp     ptb   return to top of loop
 0000 048   dne   halt
-=======
-E01B 00E         jmpl    xit    if idx >= size
-D01B 00F         jmpe    xit
-1000 010         readH
-3008 011         store   value
-3002 012         load    arl
-5004 013         add     idx
-5005 014         add     a
-3016 015         store val   stores the value in the array
-B000 016   val   nop
-3004 017         load  idx
-5007 018         add   one
-4004 019         store idx
-C00C 01A         jmp   rlop   return to top of loop
-B000 01B   xit   nop       code to print out items after all have been added
-3006 01C         load    zero
-4004 01D         store   idx
-3001 01E   ptf   load    size   create loop to print out forwards
-6004 01F         sub     idx
-E02C 020         jmpl    ptb    if idx >= size
-D02C 021         jmpe    ptb
-3003 022         load    arr
-5004 023         add     idx
-5005 024         add     a
-4026 025         store val   stores the value in the array
-B000 026   val   nop
-1800 027         printH
-3004 028         load  idx
-5007 029         add   one
-4004 02A         store idx
-C01E 02B         jmp   ptf   return to top of loop
-3001 02C   ptb   load    size   create loop to print out backwards
-6007 02D         sub     one
-4001 02E         store   size
-D03A 02F         jmpl    dne
-3002 030         load    arr
-5004 031         add     size
-5005 032         add     a
-4034 033         store val   stores the value in the array
-B000 034   val   nop
-1800 035         printH
-3004 036         load  idx
-5007 037         add   one
-4004 038         store idx
-C02C 039         jmp   ptb   return to top of loop
-0000 03A   dne   halt
->>>>>>> 256a7d4cbe2262f29a57505ed3cc9d2cff76c365

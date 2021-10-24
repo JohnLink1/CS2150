@@ -1,73 +1,73 @@
 C00A 000         jmp     start
-0000 001   size  dw      0
-4000 002   arl   dw      4000
-3000 003   arr   dw      3000
-0000 004   idx   dw      0
-0050 005   a     dw      50
-0000 006   zero  dw      0
-0001 007   one   dw      1
-0000 008   value dw      0
+0000 001   size  dw      0        constants - array size
+4000 002   arl   dw      4000     constants - array store operation
+3000 003   arr   dw      3000     constants - array get operation
+0000 004   idx   dw      0        constants - index
+0050 005   a     dw      50       constants - array start index
+0000 006   zero  dw      0        constants
+0001 007   one   dw      1        constants
+0000 008
 0000 009
-1000 00A   start readH          read in size
+1000 00A   start readH          read in size from user
 4001 00B         store   size
 3001 00C   rlop  load    size   loop to read in values for the array
 6004 00D         sub     idx
 E020 00E         jmpl    xit    if idx >= size
 D020 00F         jmpe    xit
-B000 010         nop
-B000 011         nop
-B000 012         nop
-B000 013         nop
-3002 014         load    arl
-5004 015         add     idx
-5005 016         add     a
+B000 010         nop    extra space
+B000 011         nop    extra space
+B000 012         nop    extra space
+B000 013         nop    extra space
+3002 014         load    arl     get array operation - array load
+5004 015         add     idx    add aray index to perform operation
+5005 016         add     a     add array start location
 4019 017         store   val   stores the value in the array
-1000 018         readH
-B000 019   val   nop
-B000 01A         nop
-B000 01B         nop
-3004 01C         load    idx
+1000 018         readH     get user input for array values
+B000 019   val   nop    perform operation detailed in 017
+B000 01A         nop    extra space
+B000 01B         nop    extra space
+3004 01C         load    idx   idx++;
 5007 01D         add     one
 4004 01E         store   idx
 C00C 01F         jmp     rlop   return to top of loop
 B000 020   xit   nop        code to print out items after all have been added
-3006 021         load    zero
+3006 021         load    zero    reset idx between loops
 4004 022         store   idx
-B000 023         nop
-B000 024         nop
-B000 025         nop
-B000 026         nop
+B000 023         nop    extra space
+B000 024         nop    extra space
+B000 025         nop    extra space
+B000 026         nop    extra space
 3001 027   ptf   load    size   create loop to print out forwards
 6004 028         sub     idx
 E039 029         jmpl    ptb    if idx >= size
 D039 02A         jmpe    ptb
-3003 02B         load    arr
-5004 02C         add     idx
-5005 02D         add     a
-B000 02E         nop
-B000 02F         nop
-B000 030         nop
-B000 031         nop
-4033 032         store val   stores the value in the array
-B000 033   val   nop
+3003 02B         load    arr     get array operation - array read
+5004 02C         add     idx    add aray index to perform operation
+5005 02D         add     a     add array start location
+B000 02E         nop    extra space
+B000 02F         nop    extra space
+B000 030         nop    extra space
+B000 031         nop    extra space
+4033 032         store val   loads the value from the array
+B000 033   val   nop    perform operation detailed in 032
 1800 034         printH
-3004 035         load    idx
+3004 035         load    idx   idx++;
 5007 036         add     one
 4004 037         store   idx
 C027 038         jmp     ptf   return to top of loop
 3001 039   ptb   load    size   create loop to print out backwards
 6007 03A         sub     one
-4001 03B         store   size
-E048 03C         jmpl    dne
-3003 03D         load    arr
+4001 03B         store   size    size -= 1
+E048 03C         jmpl    dne     end if size < 0
+3003 03D         load    arr     get array operation - array read
 5001 03E         add     size
-5005 03F         add     a
-4045 040         store   val   stores the value in the array
-B000 041         nop
-B000 042         nop
-B000 043         nop
-B000 044         nop
-B000 045   val   nop
-1800 046         printH
+5005 03F         add     a     add array start location
+4045 040         store   val   loads the value from the array
+B000 041         nop    extra space
+B000 042         nop    extra space
+B000 043         nop    extra space
+B000 044         nop    extra space
+B000 045   val   nop    perform operation retrieve from array at index
+1800 046         printH    print out value at index idx
 C039 047         jmp     ptb   return to top of loop
-0000 048   dne   halt
+0000 048   dne   halt    terminate

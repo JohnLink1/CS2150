@@ -1,18 +1,16 @@
-C005 000         jmp     start
-0011 001   size  dw      17        constants - array size
-0000 002   idx   dw      0
-3000 003   print dw      3000
-0001 004   one   dw      1
-3001 005   start load size
-6002 006         sub     idx
-D020 007         jmpe
-3002 008         load   idx
-5003 009         add    load
-400B 00A         store   val   stores the value in the array
-B000 00B   val   nop     perform operation detailed in 008
-1800 00C         printH
-3002 00D         load   idx
-5004 00E         sub    one
-4002 00F         store  idx
-C005 020         jmp    start
-0000 021  hlt    halt
+C004 000         jmp     start
+3010 001   size  dw      8        constants - array size
+3000 002   idx   dw      0
+0001 003   one   dw      0
+3001 004   start load   idx
+6002 005         sub    idx
+D00F 006         jmpe  
+3002 007         load   idx
+4009 008         store  val   stores the value in the array
+B000 009   val   nop
+1800 00A         printH
+3002 00B         load   idx
+5003 00C         add    one
+4002 00D         store  idx
+C004 00E         jmp    start
+0000 00F  hlt    halt

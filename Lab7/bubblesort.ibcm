@@ -1,0 +1,106 @@
+C00C 000         jmp     start
+000A 001   size  dw      10       constants - array size
+4000 002   arl   dw      4000     constants - array store operation
+3000 003   arr   dw      3000     constants - array get operation
+0000 004   idx   dw      0        constants - index
+0070 005   a     dw      70       constants - array start index
+0000 006   zero  dw      0        constants
+0001 007   one   dw      1        constants
+0009 008   idx2  dw      9
+0000 009   valu  dw      0
+0000 00A   valu2 dw      0
+0000 00B   temp  dw      0
+B000 00C   start nop         begin program
+3001 00D   slop  load    size   loop to read in values for the array
+6004 00E         sub     idx
+E01E 00F         jmpl    sor    if idx >= size
+D01E 010         jmpe    sor
+3002 011         load    arl     get array operation - array load
+5004 012         add     idx    add aray index to perform operation
+5005 013         add     a     add array start location
+4016 014         store   val   stores the value in the array
+1000 015         readH     get user input for array values
+B000 016   val   nop    perform operation detailed in 017
+3004 017         load    idx   idx++;
+5007 018         add     one
+4004 019         store   idx
+C00D 01A         jmp     slop   return to top of loop
+B000 01B         nop
+B000 01C         nop
+B000 01D         nop
+3006 01E   sor   load    zero
+4004 01F         store   idx
+3001 020   sort  load    size
+6004 021         sub     idx
+E053 022         jmpl    xit    if idx >= size
+D053 023         jmpe    xit
+3008 024   sort2 load    idx2
+6004 025         sub     idx
+E04C 026         jmpl    end    if idx >= idx2
+D04C 027         jmpe    end
+3003 028         load    arl     get array operation - array load
+5008 029         add     idx2    add aray index to perform operation
+5005 02A         add     a     add array start location
+402C 02B         store   val   stores the value in the array
+B000 02C   val   nop     perform operation detailed in 017
+4009 02D         store   valu
+3003 02E         load    arl     get array operation - array load
+5008 02F         add     idx2    add aray index to perform operation
+5005 030         add     a     add array start location
+6007 031         sub     one
+4033 032         store   val   stores the value in the array
+B000 033   val   nop     perform operation detailed in 017
+400A 034         store   valu2  
+6009 035         sub     valu
+E048 036         jmpl    end2    if idx >= size
+D048 037         jmpe    end2
+3009 038         load    valu
+400B 039         store   temp
+3002 03A         load    arl     get array operation - array store
+5008 03B         add     idx2    add aray index to perform operation
+5005 03C         add     a     add array start location
+B000 03D         nop
+4040 03E         store   val   stores the value in the array
+300A 03F         load    valu2
+B000 040   val   nop     perform operation detailed in 017
+3002 041         load    arl     get array operation - array store
+5008 042         add     idx2    add aray index to perform operation
+5005 043         add     a     add array start location
+6007 044         sub     one
+4047 045         store   val   stores the value in the array
+300B 046         load    temp
+B000 047   val   nop     perform operation detailed in 017
+3008 048   end2  load    idx2   idx2++;
+6007 049         sub     one
+4008 04A         store   idx2
+C024 04B         jmp     sort2
+3004 04C   end   load    idx   idx++;
+5007 04D         add     one
+4004 04E         store   idx
+3001 04F         load    size
+6007 050         sub     one
+4008 051         store   idx2
+C020 052         jmp     sort
+B000 053   xit   nop        code to print out items after all have been added
+3006 054         load    zero    reset idx between loops
+4004 055         store   idx
+B000 056         nop    extra space
+3001 057   ptf   load    size   create loop to print out forwards
+6004 058         sub     idx
+E069 059         jmpl    hlt    if idx >= size
+D069 05A         jmpe    hlt
+3003 05B         load    arr     get array operation - array read
+5004 05C         add     idx    add aray index to perform operation
+5005 05D         add     a     add array start location
+B000 05E         nop    extra space
+B000 05F         nop    extra space
+B000 060         nop    extra space
+B000 061         nop    extra space
+4063 062         store val   loads the value from the array
+B000 063   val   nop    perform operation detailed in 032
+1800 064         printH
+3004 065         load    idx   idx++;
+5007 066         add     one
+4004 067         store   idx
+C057 068         jmp     ptf   return to top of loop
+0000 069   hlt   halt    terminate

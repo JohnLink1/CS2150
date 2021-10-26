@@ -1,0 +1,18 @@
+C005 000         jmp     start
+3011 001   size  dw      8        constants - array size
+0011 002   idx   dw      10
+0001 003   one   dw      1
+0011 004   idx2  dw      10
+3004 005         load    idx
+4002 006         store   idx
+3001 007   start load    size
+6002 008         sub     idx
+E011 009         jmpl    
+400B 00A         store   val   stores the value in the array
+B000 00B   val   nop
+1800 00C         printH
+3002 00D         load   idx
+6003 00E         sub    one
+4002 00F         store  idx
+C007 010         jmp    start
+0000 011  hlt    halt

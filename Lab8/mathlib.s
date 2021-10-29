@@ -42,7 +42,7 @@ call multiply
 mov rsi, [v2]
 mov rdi, rax
 sub rsi, 1
-jmp realPow
+call realPow
 
 
 endloop:

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-extern "C" long multiply (long, long);
+extern "C" long product (long, long);
 extern "C" long power (long, long);
 
 int  main () {
@@ -26,7 +26,7 @@ int  main () {
     }
 
     // sum up the array and print out results
-    prod = multiply(n1, n2);
+    prod = product(n1, n2);
     cout << "Product: " << prod << endl;
 
     pow = power(n1, n2);

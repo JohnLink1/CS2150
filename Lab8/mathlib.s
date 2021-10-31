@@ -1,17 +1,17 @@
 ; John Link, jwl9vq@virginia.edu, 10/30/21, mathlib.s
-global multiply
+global product
 global power
 
 section .text
-multiply:
+product:
 xor r10, r10
 xor rax, rax
-loop:
+mult:
 cmp rsi, r10
 je endloop
 add rax, rdi
 add r10, 1
-jmp loop
+jmp mult
 
 power:
 xor r11, r11
@@ -24,7 +24,7 @@ cmp rsi, r11
 je endloop
 push rsi
 mov rsi, rdx
-call multiply
+call product
 pop rsi
 mov rdi, rax
 sub rsi, 1

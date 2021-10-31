@@ -1,3 +1,4 @@
+; John Link, jwl9vq@virginia.edu, 10/31/21, linearSearch.s
 global linearSearch
 section .text
 linearSearch:

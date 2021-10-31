@@ -18,20 +18,28 @@ mergeSort:
 cmp rsi, rdx
 jge done
 mov r10, rdx
-sub r10, rsi
+add r10, rsi
 mov rax, r10
+push rdx
+xor rdx, rdx
 mov r11, 2
 idiv r11
 mov r10, rax
-add r10, rsi
-push rdx
 mov rdx, r10
+push rsi
+push r10
 call mergeSort
+pop r10
+pop rsi
 pop rdx
 push rsi
 mov rsi, r10
 inc rsi
+push rdx
+push r10
 call mergeSort
+pop r10
+pop rdx
 pop rsi
 mov rcx, rdx
 mov rdx, r10

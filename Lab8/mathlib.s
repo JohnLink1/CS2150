@@ -1,8 +1,6 @@
+; John Link, jwl9vq@virginia.edu, 10/30/21, mathlib.s
 global multiply
 global power
-section .data
-v1 DQ 0
-v2 DQ 0
 
 section .text
 multiply:
@@ -16,19 +14,18 @@ add r10, 1
 jmp loop
 
 power:
-mov [v1], rdi
-mov [v2], rsi
 xor r11, r11
 inc r11
+mov rdx, rdi
 xor rax, rax
 inc rax
 realPow:
 cmp rsi, r11
 je endloop
-mov [v2], rsi
-mov rsi, [v1]
+push rsi
+mov rsi, rdx
 call multiply
-mov rsi, [v2]
+pop rsi
 mov rdi, rax
 sub rsi, 1
 call realPow

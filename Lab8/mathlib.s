@@ -15,20 +15,16 @@ jmp mult
 
 power:
 xor r11, r11
-inc r11
 mov rdx, rdi
 xor rax, rax
 inc rax
 realPow:
 cmp rsi, r11
 je endloop
-push rsi
-mov rsi, rdx
+dec rsi
+call power
+mov rsi, rax
 call product
-pop rsi
-mov rdi, rax
-sub rsi, 1
-call realPow
 
 endloop:
 ret

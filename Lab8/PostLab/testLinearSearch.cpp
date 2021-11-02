@@ -1,4 +1,3 @@
-//John Link, jwl9vq@virginia.edu, 10/31/21, testLinearSearch.cpp
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -25,7 +24,7 @@ int main(){
     cin >> target;
 
     int ind = linearSearch(arr, size, target);
-    
+
     if (ind > -1)
     	cout << "\nFound " << target << " at index " << ind << endl;
     else

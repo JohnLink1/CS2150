@@ -4,12 +4,11 @@ global binarySearch
 section .text
 binarySearch:
 cmp rsi, rdx
-je nfound
+jg nfound
 mov r10, rdx
-sub r10, rsi
+add r10, rsi
 shr r10, 1
-lea r10, [r10 * 4]
-cmp ecx, [edi+r10d]
+cmp ecx, [rdi+4*r10]
 jg right
 jl left
 mov rax, r10
@@ -21,6 +20,7 @@ call binarySearch
 ret
 
 right:
+inc r10
 mov rsi, r10
 call binarySearch
 ret

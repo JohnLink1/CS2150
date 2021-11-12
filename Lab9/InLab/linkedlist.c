@@ -19,9 +19,9 @@ int readInput(int* val);
 int isNumber(const char* token);
 int isEmpty(const char* input);
 struct list_item {
-   int data;
-   struct node *next;
-   struct node *prev;
+   int value;
+   struct list_item *next;
+   struct list_item *prev;
 };
 struct list_item *head = NULL;
 struct list_item *current = NULL;
@@ -41,25 +41,57 @@ int main(){
 
 	do {
 		option = readInput(&val);
-		struct list_item* node;
+		struct list_item* node = NULL;
 
 		switch(option){
 			case PUSH_FRONT:				// push onto front of list
 				// TODO: Insert code to push val onto front of linked list here.
-                                
-                                
+                                node = malloc(sizeof(struct list_item));
+                                node->value = val;
+                                if(head == NULL){
+                                    head = node;
+                                }
+                                else{
+                                    node->next = head;
+                                    head->prev = node;
+                                    head = node;
+                                }
 
 				//----END----
 				break;
 			case PUSH_BACK: 				// push onto back of list
 				// TODO: Insert code to push val onto back of linked list here.
-				
+                                val = readInput(&val);
+                                node = malloc(sizeof(struct list_item));
+                                node->value = val;
+				if(head == NULL){
+                                    head = node;
+                                }
+                                else{
+                                    current = head;
+                                    while(current->next != NULL){
+                                        current = current->next;
+                                    }
+                                    current->next = node;
+                                }
 
 				//----END----
 				break;
 			case POP_FRONT: 				// remove from front of list
 				// TODO: Insert code to remove from front of linked list here.
 				// If list is empty, do nothing.
+                                if(head != NULL){
+                                    if(head->next == NULL){
+                                        free(head);
+                                        head = NULL;
+                                    }
+                                    else{
+                                        current = head->next;
+                                        free(head);
+                                        current->prev = NULL;
+                                        head = current;
+                                    }
+                                }
 
 
 				//----END----
@@ -67,7 +99,21 @@ int main(){
 			case POP_BACK:					// remove from back of list
 				// TODO: Insert code to remove from back of linked list here.
 				// If list is empty, do nothing.
-				
+				if(head != NULL){
+                                    if(head->next == NULL){
+                                        free(head);
+                                        head = NULL;
+                                    }
+                                    else{
+                                        current = head;
+                                        while(current->next != NULL){
+                                            current = current->next;
+                                        }
+                                        current = current->prev;
+                                        free(current->next);
+                                        current->next = NULL;
+                                    }
+                                }
 
 				//----END----
 				break;
@@ -76,6 +122,15 @@ int main(){
 				// Simply print each element separated by a space as shown below:
 				// Elements: 1 2 3 4 5 
 				printf("Elements: ");
+                                if(head != NULL){
+                                    current = head;
+                                    printf("%d ", current->value);
+                                    while(current->next != NULL){
+                                        current = current->next;
+                                        printf("%d ", current->value);
+                                    }
+                                }
+                                printf("\n");
 
 
 				//----END----
@@ -92,8 +147,15 @@ int main(){
 
 	} while(option != QUIT);
 
-	// TODO: free any memory used by your linked list here
-	
+	// TODO: free any memory used by your linked list
+            if(head != NULL){
+                current = head;
+                while(current->next != NULL){
+                    current = current->next;
+                    free(current->prev);
+                }
+                free(current);
+            }
 
 	//----END----
 

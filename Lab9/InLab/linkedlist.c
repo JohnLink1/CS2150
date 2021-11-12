@@ -61,7 +61,6 @@ int main(){
 				break;
 			case PUSH_BACK: 				// push onto back of list
 				// TODO: Insert code to push val onto back of linked list here.
-                                val = readInput(&val);
                                 node = malloc(sizeof(struct list_item));
                                 node->value = val;
 				if(head == NULL){
@@ -73,6 +72,7 @@ int main(){
                                         current = current->next;
                                     }
                                     current->next = node;
+                                    node->prev = current;
                                 }
 
 				//----END----
@@ -116,7 +116,7 @@ int main(){
                                 }
 
 				//----END----
-				break;
+       				break;
 			case PRINT_LIST:				// print list
 				// TODO: Insert code to print list forwards here.
 				// Simply print each element separated by a space as shown below:

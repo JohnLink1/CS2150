@@ -1,9 +1,9 @@
 ;John Link, jwl9vq@virginia.edu, 11/1/21, threexplusone.s
 ;Optimizations used - removing all imul and idiv; finding a more effieient mod command; no beq or bra
-global collatz
+global threexplusone
 
 section .text
-collatz:
+threexplusone:
 xor rax, rax
 xor r10, r10
 cmp rdi, 1
@@ -17,7 +17,7 @@ odd:
 lea rdi, [rdi*2+rdi]              ;removed imul operation
 inc rdi
 push r10
-call collatz
+call threexplusone
 pop r10
 add r10, rax
 jmp end
@@ -25,7 +25,7 @@ jmp end
 even:
 shr rdi, 1
 push r10
-call collatz
+call threexplusone
 pop r10
 add r10, rax
 jmp end

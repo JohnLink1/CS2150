@@ -4,7 +4,7 @@
 #include "timer.h"
 using namespace std;
 
-extern "C" int collatz(int x);
+extern "C" int threexplusone(int x);
 
 int main() {
 
@@ -18,11 +18,11 @@ int main() {
     cout << "Enter iterations of subroutine: ";
     cin >> itr;
     timer t;
-    int steps = collatz(value);
+    int steps = threexplusone(value);
 
     t.start();
     for(int x = 0; x < itr; x++){
-        collatz(value);
+        threexplusone(value);
     }
     t.stop();
     //cout << (t.getTime()* 1000000000) / itr << " nanoseconds" << endl;

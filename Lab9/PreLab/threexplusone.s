@@ -10,17 +10,15 @@ cmp rdi, 1
 jle end
 inc r10
 test rdi, 1   ;removed idiv checking for even/odd
-jz even
-jnz odd
-
-odd:
+jz even       ;removed unnecessary jmp statements
 lea rdi, [rdi*2+rdi]              ;removed imul operation
 inc rdi
 push r10
 call threexplusone
 pop r10
 add r10, rax
-jmp end
+mov rax, r10
+ret
 
 even:
 shr rdi, 1
@@ -28,7 +26,8 @@ push r10
 call threexplusone
 pop r10
 add r10, rax
-jmp end
+mov rax, r10
+ret
 
 end:
 mov rax, r10

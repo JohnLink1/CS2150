@@ -9,7 +9,7 @@
 using namespace std;
 
 heap buildTree(string contents);
-int countLetter(char ch);
+int countLetter(char ch, string str);
 
 int main(int argc, char** argv){
     // verify the correct number of parameters
@@ -43,4 +43,19 @@ int main(int argc, char** argv){
 heap storage = buildTree(conts);
 
     return 0;
+}
+
+heap buildTree(string contents){
+    heap h;
+    vector<huffmanNode> vec;
+    
+}
+
+int countLetter(char ch, string str){
+    int count = 0;
+    for(char chr : str){
+        if(ch == chr)
+            count++;
+    }
+    return count;
 }

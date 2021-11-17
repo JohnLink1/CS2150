@@ -5,11 +5,12 @@
 #include <string>
 #include <fstream>
 #include <cstdlib>
+#include <iterator>
+#include <map>
 
 using namespace std;
 
 heap buildTree(string contents);
-int countLetter(char ch, string str);
 
 int main(int argc, char** argv){
     // verify the correct number of parameters
@@ -47,15 +48,18 @@ heap storage = buildTree(conts);
 
 heap buildTree(string contents){
     heap h;
-    vector<huffmanNode> vec;
-    
-}
-
-int countLetter(char ch, string str){
-    int count = 0;
-    for(char chr : str){
-        if(ch == chr)
-            count++;
+    map<char, int> m;
+    map<char, int>::iterator itr;
+    for(char ch : contents){
+        itr = m.find(ch);
+        if(itr == m.end()){
+            m.insert(pair<char, int>(ch, 1));
+        }
+        m[ch] = m[ch] + 1;
+        cout << ch << endl;
     }
-    return count;
+    for(pair<char, int> p : m){
+        h.insert(new huffmanNode(p.first, p.second));
+    }
+    h.print();
 }

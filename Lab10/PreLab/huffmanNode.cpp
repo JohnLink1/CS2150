@@ -5,12 +5,15 @@
 using namespace std;
 
 huffmanNode::huffmanNode(){
-
+    left = NULL;
+    right = NULL;
 }
 
 huffmanNode::huffmanNode(char ch, int prio){
-   letter = ch;
-   priority = prio;
+    letter = ch;
+    priority = prio;
+    left = NULL;
+    right = NULL;
 }
 
 huffmanNode::~huffmanNode(){

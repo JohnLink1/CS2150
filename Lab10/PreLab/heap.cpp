@@ -13,7 +13,7 @@ heap::heap() : heap_size(0) {
 }
 
 // builds a store_heap from an unsorted vector
-heap::heap(vector<huffmanNode> vec) : heap_size(vec.size()) {
+heap::heap(vector<huffmanNode*> vec) : heap_size(vec.size()) {
     store_heap = vec;
     store_heap.push_back(store_heap[0]);
     store_heap[0] = NULL;
@@ -26,7 +26,7 @@ heap::heap(vector<huffmanNode> vec) : heap_size(vec.size()) {
 heap::~heap() {
 }
 
-void heap::insert(huffmanNode h) {
+void heap::insert(huffmanNode* h) {
     // a vector push_back will resize as necessary
     store_heap.push_back(h);
     // move it up into the right position
@@ -35,24 +35,24 @@ void heap::insert(huffmanNode h) {
 
 void heap::percolateUp(int hole) {
     // get the value just inserted
-    huffmanNode x = store_heap[hole];
+    huffmanNode* x = store_heap[hole];
     // while we haven't run off the top and while the
     // value is less than the parent...
-    for ( ; (hole > 1) && (x.priority < store_heap[hole/2].priority); hole /= 2) {
+    for ( ; (hole > 1) && (x->priority < store_heap[hole/2]->priority); hole /= 2) {
         store_heap[hole] = store_heap[hole/2]; // move the parent down
     }
     // correct position found!  insert at that spot
     store_heap[hole] = x;
 }
 
-huffmanNode heap::deleteMin() {
+huffmanNode* heap::deleteMin() {
     // make sure the store_heap is not empty
     if (heap_size == 0) {
         throw "deleteMin() called on empty heap";
     }
 
     // save the value to be returned
-    huffmanNode ret = store_heap[1];
+    huffmanNode* ret = store_heap[1];
     // move the last inserted position into the root
     store_heap[1] = store_heap[heap_size--];
     // make sure the vector knows that there is one less element
@@ -67,16 +67,16 @@ huffmanNode heap::deleteMin() {
 
 void heap::percolateDown(int hole) {
     // get the value to percolate down
-    huffmanNode x = store_heap[hole];
+    huffmanNode* x = store_heap[hole];
     // while there is a left child...
     while (hole*2 <= heap_size) {
         int child = hole*2; // the left child
         // is there a right child?  if so, is it lesser?
-        if ((child+1 <= heap_size) && (store_heap[child+1].priority < store_heap[child].priority)) {
+        if ((child+1 <= heap_size) && (store_heap[child+1]->priority < store_heap[child]->priority)) {
             child++;
         }
         // if the child is greater than the node...
-        if (x.priority > store_heap[child].priority) {
+        if (x->priority > store_heap[child]->priority) {
             store_heap[hole] = store_heap[child]; // move child up
             hole = child;             // move hole down
         } else {
@@ -87,7 +87,7 @@ void heap::percolateDown(int hole) {
     store_heap[hole] = x;
 }
 
-huffmanNode heap::findMin() {
+huffmanNode* heap::findMin() {
     if (heap_size == 0) {
         throw "findMin() called on empty heap";
     }
@@ -108,9 +108,9 @@ bool heap::isEmpty() {
 }
 
 void heap::print() {
-    cout << "(" << store_heap[0].letter << ") ";
+    cout << "(" << store_heap[0]->letter << ") ";
     for (int i = 1; i <= heap_size; i++) {
-        cout << store_heap[i].letter << " ";
+        cout << store_heap[i]->letter << " ";
         // next line from http://tinyurl.com/mf9tbgm
         bool isPow2 = (((i+1) & ~(i))==(i+1))? i+1 : 0;
         if (isPow2) {

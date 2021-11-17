@@ -13,19 +13,19 @@ using namespace std;
 class heap {
 public:
     heap();
-    heap(vector<huffmanNode> vec);
+    heap(vector<huffmanNode*> vec);
     ~heap();
 
-    void insert(char ch);
-    huffmanNode findMin();
-    huffmanNode deleteMin();
+    void insert(huffmanNode* h);
+    huffmanNode* findMin();
+    huffmanNode* deleteMin();
     unsigned int size();
     void makeEmpty();
     bool isEmpty();
     void print();
 
 private:
-    vector<huffmanNode> store_heap;
+    vector<huffmanNode*> store_heap;
     unsigned int heap_size;
 
     void percolateUp(int hole);

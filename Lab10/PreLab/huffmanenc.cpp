@@ -7,10 +7,16 @@
 #include <cstdlib>
 #include <iterator>
 #include <map>
+#include <iomanip>
 
 using namespace std;
 
-heap buildTree(string contents);
+heap buildHeap(string contents);
+huffmanNode* buildTree(heap h);
+map<char, string> getCodes(huffmanNode* root);
+map<char, int> frequency;
+bool find(huffmanNode* root, char ch);
+string pathTo(huffmanNode* root, char ch);
 
 int main(int argc, char** argv){
     // verify the correct number of parameters
@@ -32,21 +38,76 @@ int main(int argc, char** argv){
     string conts;
     char g;
     while (file.get(g)) {
-        conts += g;
+        if(int(g) >= 32 && int(g) <= 126)
+            conts += g;
     }
 
+    file.close();
+    heap storage = buildHeap(conts);
+    huffmanNode* root = buildTree(storage);
+    map<char, string> codes = getCodes(root);
+    string encoded = "";
+    for(char ch : conts){
+        encoded += codes[ch];
+    }
     // a nice pretty separator
     cout << "----------------------------------------" << endl;
-
-    file.close();
-
-
-heap storage = buildTree(conts);
+    cout << encoded << endl;
+    // a nice pretty separator
+    cout << "----------------------------------------" << endl;
+    double oribits = conts.length() * 8;
+    double encbits = encoded.length();
+    double comprto = oribits / encbits;
+    double cost = encbits / conts.length();
+    cout << "There are a total of " << conts.length() << " symbols that are encoded." << endl;
+    cout << "There are " << codes.size() << " distinct symbols used." << endl;
+    cout << "There were " << oribits << " bits in the original file." << endl;
+    cout << "There were " << encbits << " bits in the compressed file." << endl;
+    cout << "This gives a compression ratio of " << setprecision(6) << comprto << "." << endl;
+    cout << "The cost of the Huffman tree is " << setprecision(6) << cost << " bits per character." << endl;
 
     return 0;
 }
 
-heap buildTree(string contents){
+map<char, string> getCodes(huffmanNode* root){
+    map<char, string> codes;
+    for(pair<char, int> p : frequency){
+        codes.insert(pair<char, string>(p.first, pathTo(root, p.first)));
+        if(p.first == ' ')
+            cout << "space " << codes[p.first] << endl;
+        else
+            cout << p.first << " " << codes[p.first] << endl;
+    }
+    return codes;
+}
+string pathTo(huffmanNode* root, char ch){
+    if(root == NULL)
+        return "";
+    if(root->letter == ch)
+        return "";
+    if(find(root->left, ch))
+        return "0" + pathTo(root->left, ch);
+    if(find(root->right, ch))
+        return "1" + pathTo(root->right, ch);
+    return "";
+}
+
+
+bool find(huffmanNode* root, char ch){
+    if(root == NULL)
+        return false;
+    if(root->letter == ch)
+        return true;
+    if(root->left != NULL and root->right != NULL)
+        return find(root->left, ch) || find(root->right, ch);
+    if(root->left != NULL)
+        return find(root->left, ch);
+    if(root->right != NULL)
+        return find(root->right, ch);
+    return false;
+}
+
+heap buildHeap(string contents){
     heap h;
     map<char, int> m;
     map<char, int>::iterator itr;
@@ -56,10 +117,23 @@ heap buildTree(string contents){
             m.insert(pair<char, int>(ch, 1));
         }
         m[ch] = m[ch] + 1;
-        cout << ch << endl;
     }
+    frequency = m;
     for(pair<char, int> p : m){
         h.insert(new huffmanNode(p.first, p.second));
     }
-    h.print();
+    return h;
+}
+
+huffmanNode* buildTree(heap h){
+    while(!h.isEmpty()){
+        huffmanNode* top = new huffmanNode();
+        if(h.size() == 1)
+            return h.deleteMin();
+        top->left = h.deleteMin();
+        top->right = h.deleteMin();
+        top->priority = top->left->priority + top->right->priority;
+        h.insert(top);
+    }
+    return new huffmanNode();
 }

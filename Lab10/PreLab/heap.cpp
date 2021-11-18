@@ -99,7 +99,10 @@ unsigned int heap::size() {
 }
 
 void heap::makeEmpty() {
-    heap_size = 0;
+    while(heap_size != 0){
+        deleteMin();
+        heap_size--;
+    }
     store_heap.resize(1);
 }
 
@@ -108,7 +111,7 @@ bool heap::isEmpty() {
 }
 
 void heap::print() {
-    cout << "(" << store_heap[0]->letter << ") ";
+    cout << "(" << "root" << ") ";
     for (int i = 1; i <= heap_size; i++) {
         cout << store_heap[i]->letter << " ";
         // next line from http://tinyurl.com/mf9tbgm

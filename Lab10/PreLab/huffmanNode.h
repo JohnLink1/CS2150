@@ -10,13 +10,9 @@ class huffmanNode{
         huffmanNode();
         huffmanNode(char ch, int prio);
         ~huffmanNode();
-
-    private:
         char letter;
         int priority;
         huffmanNode* left;
         huffmanNode* right;
-        friend class heap;
-        friend class huffmanenc;
 };
 #endif

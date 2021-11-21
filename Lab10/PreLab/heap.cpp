@@ -9,7 +9,7 @@ using namespace std;
 
 // default constructor
 heap::heap() : heap_size(0) {
-    store_heap.push_back(NULL);
+    store_heap.push_back(new huffmanNode());
 }
 
 // builds a store_heap from an unsorted vector

@@ -40,7 +40,6 @@ int main(int argc, char** argv){
         if(int(g) >= 32 && int(g) <= 126)
             conts += g;
     }
-
     file.close();
     heap storage = buildHeap(conts);
     huffmanNode* root = buildTree(storage);
@@ -75,7 +74,7 @@ void getCodes(huffmanNode* root, string str){
         getCodes(root->left, str + "0");
     if(root->right != NULL)
         getCodes(root->right, str + "1");
-    if(root->letter != NULL){
+    if(int(root->letter) != -32){
         map<char, string>::iterator itr;
         itr = codes.find(root->letter);
         if(itr == codes.end()){
@@ -97,7 +96,8 @@ heap buildHeap(string contents){
         if(itr == m.end()){
             m.insert(pair<char, int>(ch, 1));
         }
-        m[ch] = m[ch] + 1;
+        else
+            m[ch] = m[ch] + 1;
     }
     frequency = m;
     for(pair<char, int> p : m){
@@ -107,14 +107,15 @@ heap buildHeap(string contents){
 }
 
 huffmanNode* buildTree(heap h){
+    huffmanNode* top;
     while(!h.isEmpty()){
         if(h.size() == 1)
             return h.deleteMin();
-        huffmanNode* top = new huffmanNode();
+        top = new huffmanNode();
         top->left = h.deleteMin();
         top->right = h.deleteMin();
         top->priority = top->left->priority + top->right->priority;
         h.insert(top);
     }
-    return new huffmanNode();
+    return NULL;
 }

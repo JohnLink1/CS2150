@@ -15,6 +15,7 @@ heap buildHeap(string contents);
 huffmanNode* buildTree(heap h);
 map<char, string> getCodes(huffmanNode* root);
 map<char, int> frequency;
+string order = "";
 bool find(huffmanNode* root, char ch);
 string pathTo(huffmanNode* root, char ch);
 
@@ -115,12 +116,13 @@ heap buildHeap(string contents){
         itr = m.find(ch);
         if(itr == m.end()){
             m.insert(pair<char, int>(ch, 1));
+            order += ch;
         }
         m[ch] = m[ch] + 1;
     }
     frequency = m;
-    for(pair<char, int> p : m){
-        h.insert(new huffmanNode(p.first, p.second));
+    for(char c : order){
+        h.insert(new huffmanNode(c, frequency[c]));
     }
     return h;
 }

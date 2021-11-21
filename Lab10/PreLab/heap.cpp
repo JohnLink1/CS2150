@@ -9,7 +9,7 @@ using namespace std;
 
 // default constructor
 heap::heap() : heap_size(0) {
-    store_heap.push_back(new huffmanNode());
+    store_heap.push_back(NULL);
 }
 
 // builds a store_heap from an unsorted vector
@@ -29,8 +29,9 @@ heap::~heap() {
 void heap::insert(huffmanNode* h) {
     // a vector push_back will resize as necessary
     store_heap.push_back(h);
+    heap_size++;
     // move it up into the right position
-    percolateUp(++heap_size);
+    percolateUp(heap_size);
 }
 
 void heap::percolateUp(int hole) {

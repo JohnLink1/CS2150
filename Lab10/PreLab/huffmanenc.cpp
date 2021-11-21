@@ -13,11 +13,9 @@ using namespace std;
 
 heap buildHeap(string contents);
 huffmanNode* buildTree(heap h);
-map<char, string> getCodes(huffmanNode* root);
+void getCodes(huffmanNode* root, string str);
 map<char, int> frequency;
-string order = "";
-bool find(huffmanNode* root, char ch);
-string pathTo(huffmanNode* root, char ch);
+map<char, string> codes;
 
 int main(int argc, char** argv){
     // verify the correct number of parameters
@@ -46,7 +44,7 @@ int main(int argc, char** argv){
     file.close();
     heap storage = buildHeap(conts);
     huffmanNode* root = buildTree(storage);
-    map<char, string> codes = getCodes(root);
+    getCodes(root, "");
     string encoded = "";
     for(char ch : conts){
         encoded += codes[ch];
@@ -70,42 +68,24 @@ int main(int argc, char** argv){
     return 0;
 }
 
-map<char, string> getCodes(huffmanNode* root){
-    map<char, string> codes;
-    for(pair<char, int> p : frequency){
-        codes.insert(pair<char, string>(p.first, pathTo(root, p.first)));
-        if(p.first == ' ')
-            cout << "space " << codes[p.first] << endl;
-        else
-            cout << p.first << " " << codes[p.first] << endl;
-    }
-    return codes;
-}
-string pathTo(huffmanNode* root, char ch){
+void getCodes(huffmanNode* root, string str){
     if(root == NULL)
-        return "";
-    if(root->letter == ch)
-        return "";
-    if(find(root->left, ch))
-        return "0" + pathTo(root->left, ch);
-    if(find(root->right, ch))
-        return "1" + pathTo(root->right, ch);
-    return "";
-}
-
-
-bool find(huffmanNode* root, char ch){
-    if(root == NULL)
-        return false;
-    if(root->letter == ch)
-        return true;
-    if(root->left != NULL and root->right != NULL)
-        return find(root->left, ch) || find(root->right, ch);
+        return;
     if(root->left != NULL)
-        return find(root->left, ch);
+        getCodes(root->left, str + "0");
     if(root->right != NULL)
-        return find(root->right, ch);
-    return false;
+        getCodes(root->right, str + "1");
+    if(root->letter != NULL){
+        map<char, string>::iterator itr;
+        itr = codes.find(root->letter);
+        if(itr == codes.end()){
+            codes.insert(pair<char, string>(root->letter, str));
+            if(root->letter == ' ')
+                cout << "space " << str << endl;
+            else
+                cout << root->letter << " " << str << endl;
+        }
+    }
 }
 
 heap buildHeap(string contents){
@@ -116,22 +96,21 @@ heap buildHeap(string contents){
         itr = m.find(ch);
         if(itr == m.end()){
             m.insert(pair<char, int>(ch, 1));
-            order += ch;
         }
         m[ch] = m[ch] + 1;
     }
     frequency = m;
-    for(char c : order){
-        h.insert(new huffmanNode(c, frequency[c]));
+    for(pair<char, int> p : m){
+        h.insert(new huffmanNode(p.first, p.second));
     }
     return h;
 }
 
 huffmanNode* buildTree(heap h){
     while(!h.isEmpty()){
-        huffmanNode* top = new huffmanNode();
         if(h.size() == 1)
             return h.deleteMin();
+        huffmanNode* top = new huffmanNode();
         top->left = h.deleteMin();
         top->right = h.deleteMin();
         top->priority = top->left->priority + top->right->priority;

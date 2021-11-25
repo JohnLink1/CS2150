@@ -12,7 +12,6 @@ using namespace std;
 
 class Node {
     int size;
-    int var = 0;
     map<string, int> idx;
     list<string>* adj;
     bool* visit;
@@ -26,19 +25,19 @@ public:
 };
 
 Node::Node(int i){
-    size = i;
+    size = 0;
     adj = new list<string>[i];
     visit = new bool[i];
 }
 
 void Node::edge(string str1, string str2){
     if(idx.count(str1) == 0){
-        idx.insert(pair<string, int>(str1, var));
-        var++;
+        idx.insert(pair<string, int>(str1, size));
+        size++;
     }
     if(idx.count(str2) == 0){
-        idx.insert(pair<string, int>(str2, var));
-        var++;
+        idx.insert(pair<string, int>(str2, size));
+        size++;
     }
     adj[idx[str1]].push_back(str2);
     //cout << idx[str1] << " " << idx[str2] << endl;
@@ -60,6 +59,7 @@ void Node::preSort(string str){
 }
 
 void Node::sort(){
+    stack<string> starts;
     for(int x = 0; x < size; x++){
         visit[x] = false;
     }
@@ -71,16 +71,20 @@ void Node::sort(){
     }
     for(pair<string, int> p : idx){
         if(!visit[p.second])
-            first = p.first;
+            starts.push(p.first);
     }
 
     for(int x = 0; x < size; x++){
         visit[x] = false;
     } 
-    cout << first << " ";
-    preSort(first);
+    while(!starts.empty()){
+        cout << starts.top() << " ";
+        preSort(starts.top());
+        starts.pop();
+    }
 
     cout << endl;
+    cout << size << endl;
 }
 
 int main(int argc, char** argv){

@@ -9,7 +9,13 @@
 #include <list>
 
 using namespace std;
-
+/**
+ * @brief Class to store the Graph - called node for some reason
+ *
+ * Class stores Verticies and their respective indexes in the parallel visit and list<string> arrays
+ *
+ *
+ */
 class Node {
     int size;
     map<string, int> idx;
@@ -20,15 +26,32 @@ class Node {
 public:
     string first;
     Node(int i);
+    ~Node();
     void edge(string str1, string str2);
     void sort();
 };
 
+
+/**
+ * @brief Creates an empty graph of size <= i
+ *
+ * This function computes the average using the standard accepted
+ * formula for doing so.
+ *
+ * @return The average of the two passed values.
+ * @param x The first value to average.
+ * @param y The second value to average.
+ * @todo Need to write acceptance tests for this function
+ */
 Node::Node(int i){
     size = 0;
-    adj = new list<string>[i];
-    visit = new bool[i];
+    adj = new list<string>[i+1];
+    visit = new bool[i+1];
 }
+Node::~Node(){
+    //delete adj;
+    //delete visit;
+ }
 
 void Node::edge(string str1, string str2){
     if(idx.count(str1) == 0){
@@ -58,6 +81,15 @@ void Node::preSort(string str){
     }
 }
 
+/**
+ * @brief Preforms setup and sorting operations on the graph
+ *
+ * Sorts a preassembled graph by traversing though a list of verticies and edges
+ *
+ *
+ * @return void
+ */
+
 void Node::sort(){
     stack<string> starts;
     for(int x = 0; x < size; x++){
@@ -84,9 +116,19 @@ void Node::sort(){
     }
 
     cout << endl;
-    cout << size << endl;
+    //cout << size << endl;
 }
-
+/**
+ * @brief Organizes the file input, sorting, and desired output
+ *
+ * This function computes the average using the standard accepted
+ * formula for doing so.
+ *
+ * @return Error codes
+ * @param argc The number of command line parameters.
+ * @param argv Stored parameters.
+ *
+ */
 int main(int argc, char** argv){
 
     if (argc != 2) {

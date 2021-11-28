@@ -75,12 +75,13 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a11ceb02ee12f909ed8dce748182e56a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a11ceb02ee12f909ed8dce748182e56a1">Node</a> (int i)</td></tr>
-<tr class="memdesc:a11ceb02ee12f909ed8dce748182e56a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an empty graph of size &lt;= i.  <a href="classNode.html#a11ceb02ee12f909ed8dce748182e56a1">More...</a><br /></td></tr>
-<tr class="separator:a11ceb02ee12f909ed8dce748182e56a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba8cdbc5143449531f90c06d0b200f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a3ba8cdbc5143449531f90c06d0b200f8">Node</a> (int i, map&lt; string, int &gt;)</td></tr>
+<tr class="separator:a3ba8cdbc5143449531f90c06d0b200f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa0840c3cb5c7159be6d992adecd2097c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aa0840c3cb5c7159be6d992adecd2097c">~Node</a> ()</td></tr>
+<tr class="memdesc:aa0840c3cb5c7159be6d992adecd2097c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default destructor for <a class="el" href="classNode.html" title="Class to store the Graph - called node for some reason.">Node</a> class.  <a href="classNode.html#aa0840c3cb5c7159be6d992adecd2097c">More...</a><br /></td></tr>
 <tr class="separator:aa0840c3cb5c7159be6d992adecd2097c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8275292df699678f2289039c8effc6dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a8275292df699678f2289039c8effc6dc">edge</a> (string str1, string str2)</td></tr>
+<tr class="memdesc:a8275292df699678f2289039c8effc6dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts an edge connection.  <a href="classNode.html#a8275292df699678f2289039c8effc6dc">More...</a><br /></td></tr>
 <tr class="separator:a8275292df699678f2289039c8effc6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab244c5960501e6e320f92f907414c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aab244c5960501e6e320f92f907414c8e">sort</a> ()</td></tr>
 <tr class="memdesc:aab244c5960501e6e320f92f907414c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preforms setup and sorting operations on the graph.  <a href="classNode.html#aab244c5960501e6e320f92f907414c8e">More...</a><br /></td></tr>
@@ -93,10 +94,20 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class to store the Graph - called node for some reason. </p>
-<p>Class stores Verticies and their respective indexes in the parallel visit and list&lt;string&gt; arrays </p>
+<p>Creates an empty graph of size &lt;= i.</p>
+<p>Class stores Verticies and their respective indexes in the parallel visit and list&lt;string&gt; arrays</p>
+<p>This function computes the average using the standard accepted formula for doing so.</p>
+<dl class="section return"><dt>Returns</dt><dd>A <a class="el" href="classNode.html" title="Class to store the Graph - called node for some reason.">Node</a> object </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Number of verticies. </td></tr>
+    <tr><td class="paramname">m</td><td>The passed string to index map. </td></tr>
+  </table>
+  </dd>
+</dl>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a11ceb02ee12f909ed8dce748182e56a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11ceb02ee12f909ed8dce748182e56a1">&#9670;&nbsp;</a></span>Node()</h2>
+<a id="a3ba8cdbc5143449531f90c06d0b200f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba8cdbc5143449531f90c06d0b200f8">&#9670;&nbsp;</a></span>Node()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -105,21 +116,21 @@ Public Attributes</h2></td></tr>
           <td class="memname">Node::Node </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>i</em></td><td>)</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Creates an empty graph of size &lt;= i. </p>
-<p>This function computes the average using the standard accepted formula for doing so.</p>
-<dl class="section return"><dt>Returns</dt><dd>The average of the two passed values. </dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">i</td><td>The first value to average. </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -137,6 +148,9 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Default destructor for <a class="el" href="classNode.html" title="Class to store the Graph - called node for some reason.">Node</a> class. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -166,6 +180,17 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Inserts an edge connection. </p>
+<p>Adds the second string to the connections list of the first string.</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str1</td><td>Starting vertex. </td></tr>
+    <tr><td class="paramname">str2</td><td>Ending vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

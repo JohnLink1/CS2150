@@ -17,11 +17,11 @@ using namespace std;
  *
  */
 class Node {
-    int size;
-    map<string, int> idx;
-    list<string>* adj;
-    bool* visit;
-    void preSort(string str);
+    int size; /*@var Number of verticies. */
+    map<string, int> idx; /*@var Storage of string verticies to respective indicies. */
+    list<string>* adj; /*@var Storage list of edges for each vertex. */
+    bool* visit; /*@var Storage array for visited verticies. */
+    void preSort(string str); 
 
 public:
     string first;
@@ -33,13 +33,15 @@ public:
 
 
 /**
+ * @class Node
  * @brief Creates an empty graph of size <= i
  *
  * This function computes the average using the standard accepted
  * formula for doing so.
  *
  * @return A Node object
- * @param i The first value to average.
+ * @param i Number of verticies.
+ * @param m The passed string to index map.
  *
  */
 Node::Node(int i, map<string, int> m){
@@ -63,13 +65,13 @@ Node::~Node(){
  }
 
 /**
- * @brief Inserts a vector
+ * @brief Inserts an edge connection.
  *
- * This function computes the average using the standard accepted
- * formula for doing so.
+ * Adds the second string to the connections list of the first string.
  *
- * @return The average of the two passed values.
- * @param i The first value to average.
+ * @return void
+ * @param str1 Starting vertex.
+ * @param str2 Ending vertex.
  *
  */
 void Node::edge(string str1, string str2){
@@ -77,6 +79,16 @@ void Node::edge(string str1, string str2){
     //cout << idx[str1] << " " << idx[str2] << endl;
 }
 
+/**
+ * @brief Traverses through the graph
+ *
+ * Prints out the list items in a traversed order.
+ *
+ * @return void
+ * @param str Starting vertex.
+ *
+ *
+ */
 void Node::preSort(string str){
     visit[idx[str]] = true;
 
@@ -102,7 +114,7 @@ void Node::preSort(string str){
  */
 
 void Node::sort(){
-    stack<string> starts;
+    map<string, int> starts;
     for(int x = 0; x < size; x++){
         visit[x] = false;
     }
@@ -114,16 +126,15 @@ void Node::sort(){
     }
     for(pair<string, int> p : idx){
         if(!visit[p.second])
-            starts.push(p.first);
+            starts.insert(p);
     }
 
     for(int x = 0; x < size; x++){
         visit[x] = false;
     } 
-    while(!starts.empty()){
-        cout << starts.top() << " ";
-        preSort(starts.top());
-        starts.pop();
+    for(pair<string, int> p: starts){
+        cout << p.first << " ";
+        preSort(p.first);
     }
 
     cout << endl;
@@ -132,13 +143,12 @@ void Node::sort(){
 /**
  * @brief Organizes the file input, sorting, and desired output
  *
- * This function computes the average using the standard accepted
- * formula for doing so.
+ * Takes in file organized verticies and edges, assigns edges to starting verticies, then sorts topologically and prints them out.
  *
  * @return Error codes
  * @param argc The number of command line parameters.
  * @param argv Stored parameters.
- *
+ * 
  */
 int main(int argc, char** argv){
 

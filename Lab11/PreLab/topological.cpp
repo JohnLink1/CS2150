@@ -25,7 +25,7 @@ class Node {
 
 public:
     string first;
-    Node(int i);
+    Node(int i, map<string, int>);
     ~Node();
     void edge(string str1, string str2);
     void sort();
@@ -38,30 +38,41 @@ public:
  * This function computes the average using the standard accepted
  * formula for doing so.
  *
- * @return The average of the two passed values.
- * @param x The first value to average.
- * @param y The second value to average.
- * @todo Need to write acceptance tests for this function
+ * @return A Node object
+ * @param i The first value to average.
+ *
  */
-Node::Node(int i){
-    size = 0;
-    adj = new list<string>[i+1];
-    visit = new bool[i+1];
+Node::Node(int i, map<string, int> m){
+    size = i;
+    idx = m;
+    adj = new list<string>[i];
+    visit = new bool[i];
 }
+/**
+ * @brief Default destructor for Node class.
+ *
+ *
+ *
+ *
+ * @return Nothing
+ *
+ */
 Node::~Node(){
     //delete adj;
     //delete visit;
  }
 
+/**
+ * @brief Inserts a vector
+ *
+ * This function computes the average using the standard accepted
+ * formula for doing so.
+ *
+ * @return The average of the two passed values.
+ * @param i The first value to average.
+ *
+ */
 void Node::edge(string str1, string str2){
-    if(idx.count(str1) == 0){
-        idx.insert(pair<string, int>(str1, size));
-        size++;
-    }
-    if(idx.count(str2) == 0){
-        idx.insert(pair<string, int>(str2, size));
-        size++;
-    }
     adj[idx[str1]].push_back(str2);
     //cout << idx[str1] << " " << idx[str2] << endl;
 }
@@ -148,6 +159,7 @@ int main(int argc, char** argv){
     string s2 = "";
     queue<string> str1;
     queue<string> str2;
+    map<string, int> m;
     int count = 0;
     while(true){
         file >> s1;
@@ -156,9 +168,16 @@ int main(int argc, char** argv){
            break;
         str1.push(s1);
         str2.push(s2);
-        count++;
+        if(m.count(s1) == 0){
+            m.insert(pair<string, int>(s1, count));
+            count++;
+        }
+        if(m.count(s2) == 0){
+            m.insert(pair<string, int>(s2, count));
+            count++;
+        }
     }
-    Node node(count);
+    Node node(count, m);
     for(int x = 0; x < count; x++){
         node.edge(str1.front(), str2.front());
         //cout << str1.front() << " " << str2.front() << endl;

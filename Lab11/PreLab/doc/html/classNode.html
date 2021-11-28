@@ -69,14 +69,21 @@ $(function() {
 <div class="title">Node Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class to store the Graph - called node for some reason.  
+ <a href="classNode.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a11ceb02ee12f909ed8dce748182e56a1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a11ceb02ee12f909ed8dce748182e56a1">Node</a> (int i)</td></tr>
+<tr class="memdesc:a11ceb02ee12f909ed8dce748182e56a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an empty graph of size &lt;= i.  <a href="classNode.html#a11ceb02ee12f909ed8dce748182e56a1">More...</a><br /></td></tr>
 <tr class="separator:a11ceb02ee12f909ed8dce748182e56a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0840c3cb5c7159be6d992adecd2097c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aa0840c3cb5c7159be6d992adecd2097c">~Node</a> ()</td></tr>
+<tr class="separator:aa0840c3cb5c7159be6d992adecd2097c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8275292df699678f2289039c8effc6dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a8275292df699678f2289039c8effc6dc">edge</a> (string str1, string str2)</td></tr>
 <tr class="separator:a8275292df699678f2289039c8effc6dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab244c5960501e6e320f92f907414c8e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#aab244c5960501e6e320f92f907414c8e">sort</a> ()</td></tr>
+<tr class="memdesc:aab244c5960501e6e320f92f907414c8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Preforms setup and sorting operations on the graph.  <a href="classNode.html#aab244c5960501e6e320f92f907414c8e">More...</a><br /></td></tr>
 <tr class="separator:aab244c5960501e6e320f92f907414c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -84,7 +91,10 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a523042bca7f126dca8c8a3e8a391b389"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNode.html#a523042bca7f126dca8c8a3e8a391b389">first</a></td></tr>
 <tr class="separator:a523042bca7f126dca8c8a3e8a391b389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class to store the Graph - called node for some reason. </p>
+<p>Class stores Verticies and their respective indexes in the parallel visit and list&lt;string&gt; arrays </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a11ceb02ee12f909ed8dce748182e56a1"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a11ceb02ee12f909ed8dce748182e56a1">&#9670;&nbsp;</a></span>Node()</h2>
 
@@ -96,6 +106,33 @@ Public Attributes</h2></td></tr>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Creates an empty graph of size &lt;= i. </p>
+<p>This function computes the average using the standard accepted formula for doing so.</p>
+<dl class="section return"><dt>Returns</dt><dd>The average of the two passed values. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The first value to average. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aa0840c3cb5c7159be6d992adecd2097c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0840c3cb5c7159be6d992adecd2097c">&#9670;&nbsp;</a></span>~Node()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Node::~Node </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -146,6 +183,10 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Preforms setup and sorting operations on the graph. </p>
+<p>Sorts a preassembled graph by traversing though a list of verticies and edges</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

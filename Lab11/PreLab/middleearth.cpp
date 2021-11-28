@@ -9,12 +9,12 @@
 /**
  * @brief Shuffles data
  *
- * Shuffle method uses the Mersenne Twister engine.
+ * Shuffle method uses the Mersenne Twister engine to randomize the order of the data in the vector provided
  *
  * @return void
  * @param first an iterator pointing to the first element in a string vector
  * @param last an iterator pointing to the last element in a string vector
- * @param g an mt19937 reference
+ * @param g Mersenne-Twister random number engine reference
  */
 void shuffle (vector<string>::iterator first, vector<string>::iterator last, mt19937& g) {
     for (auto i=(last-first)-1; i>0; --i) {
@@ -74,7 +74,17 @@ const array<string, 40> all_city_names{
     "Dol Guldur",       // fortress in Mirkwood where Sauron, as the Necromancer, hid during most of the Hobbit
 };
 
-// Iluvatar, the creator of Middle-Earth
+/**
+ * @brief Constructor for the Middle Earth
+ *
+ * Shuffle method uses the Mersenne Twister engine to randomize the order of the data in the vector provided
+ *
+ * @return Middle Earth Object
+ * @param xsize Size in x direction
+ * @param ysize Size in y direction
+ * @param num_cities Number of total cities
+ * @param seed Integer seed used to generate the middle earth
+ */
 MiddleEarth::MiddleEarth(int xsize, int ysize, int num_cities, int seed) {
     this->xsize = xsize;
     this->ysize = ysize;
@@ -118,6 +128,14 @@ MiddleEarth::MiddleEarth(int xsize, int ysize, int num_cities, int seed) {
     }
 }
 
+/**
+ * @brief Prints out info on the created world.
+ *
+ * Prints the total number of cities, number of cities used, and their names.
+ *
+ * @return void
+ *
+ */
 // The Mouth of Sauron!
 // Prints out info on the created 'world'
 void MiddleEarth::print() {
@@ -130,8 +148,14 @@ void MiddleEarth::print() {
     }
 }
 
-// Prints a tab-separated table of the distances,
-// which can be loaded into Excel or similar
+/**
+ * @brief Prints out the cities in the order they appear in the cities vector.
+ *
+ * Prints out the cities separated by tabs, then each city, its location, and distance to each other city separated by tabs.
+ *
+ * @return void
+ * 
+ */
 void MiddleEarth::printTable() {
     cout << "Table: " << endl << endl << "Location\txpos\typos\t";
     for (auto city : cities) {
@@ -147,18 +171,28 @@ void MiddleEarth::printTable() {
         cout << endl;
     }
 }
-
-// This method returns the distance between the two passed cities.
-// If we assume that the hash table (i.e. the map) is O(1),
-// then this method call is also O(1)
+/**
+ * @brief Calculates the distance between cities.
+ *
+ * Retrieves the distance value from the precomputed map.
+ *
+ * @return The distance between two provided cities.
+ * @param city1 A reference to the first city.
+ * @param city2 A reference to the second city.
+ */
 float MiddleEarth::getDistance(const string& city1, const string& city2) {
     return distances[city1][city2];
 }
 
-// Returns the list of cities to travel to.
-// The first city is the original start point as well as the end point.
-// The number of cities passed in does not include this start/end point
-// (so there will be length+1 entries in the returned vector).
+/**
+ * @brief Maps a travel route through Middle Earth
+ *
+ * The first city is the original start point as well as the end point.
+ * The number of cities passed in does not include this start/end point.
+ *
+ * @return List of cities to travel to.
+ * @param length The number of cities to be visited.
+ */
 vector<string> MiddleEarth::getItinerary(unsigned int length) {
     // check parameter
     if (length >= cities.size()) {

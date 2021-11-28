@@ -74,14 +74,19 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad8fe036789b54f21f826fa0abdc06580"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleEarth.html#ad8fe036789b54f21f826fa0abdc06580">MiddleEarth</a> (int xsize, int ysize, int num_cities, int seed)</td></tr>
+<tr class="memdesc:ad8fe036789b54f21f826fa0abdc06580"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor for the Middle Earth.  <a href="classMiddleEarth.html#ad8fe036789b54f21f826fa0abdc06580">More...</a><br /></td></tr>
 <tr class="separator:ad8fe036789b54f21f826fa0abdc06580"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5cb0956acbe5e39525e5061c9f3cc79b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleEarth.html#a5cb0956acbe5e39525e5061c9f3cc79b">print</a> ()</td></tr>
+<tr class="memdesc:a5cb0956acbe5e39525e5061c9f3cc79b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out info on the created world.  <a href="classMiddleEarth.html#a5cb0956acbe5e39525e5061c9f3cc79b">More...</a><br /></td></tr>
 <tr class="separator:a5cb0956acbe5e39525e5061c9f3cc79b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae724794944d0ade7854047e779eb7054"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleEarth.html#ae724794944d0ade7854047e779eb7054">printTable</a> ()</td></tr>
+<tr class="memdesc:ae724794944d0ade7854047e779eb7054"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints out the cities in the order they appear in the cities vector.  <a href="classMiddleEarth.html#ae724794944d0ade7854047e779eb7054">More...</a><br /></td></tr>
 <tr class="separator:ae724794944d0ade7854047e779eb7054"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a23b3c1bc67569c0ad00aef88ed4ce863"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleEarth.html#a23b3c1bc67569c0ad00aef88ed4ce863">getDistance</a> (const string &amp;city1, const string &amp;city2)</td></tr>
+<tr class="memdesc:a23b3c1bc67569c0ad00aef88ed4ce863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the distance between cities.  <a href="classMiddleEarth.html#a23b3c1bc67569c0ad00aef88ed4ce863">More...</a><br /></td></tr>
 <tr class="separator:a23b3c1bc67569c0ad00aef88ed4ce863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad730d037c3946ec1129657fc5e0cb353"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMiddleEarth.html#ad730d037c3946ec1129657fc5e0cb353">getItinerary</a> (unsigned int length)</td></tr>
+<tr class="memdesc:ad730d037c3946ec1129657fc5e0cb353"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps a travel route through Middle Earth.  <a href="classMiddleEarth.html#ad730d037c3946ec1129657fc5e0cb353">More...</a><br /></td></tr>
 <tr class="separator:ad730d037c3946ec1129657fc5e0cb353"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -123,6 +128,19 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Constructor for the Middle Earth. </p>
+<p>Shuffle method uses the Mersenne Twister engine to randomize the order of the data in the vector provided</p>
+<dl class="section return"><dt>Returns</dt><dd>Middle Earth Object </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xsize</td><td>Size in x direction </td></tr>
+    <tr><td class="paramname">ysize</td><td>Size in y direction </td></tr>
+    <tr><td class="paramname">num_cities</td><td>Number of total cities </td></tr>
+    <tr><td class="paramname">seed</td><td>Integer seed used to generate the middle earth </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -152,6 +170,17 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculates the distance between cities. </p>
+<p>Retrieves the distance value from the precomputed map.</p>
+<dl class="section return"><dt>Returns</dt><dd>The distance between two provided cities. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">city1</td><td>A reference to the first city. </td></tr>
+    <tr><td class="paramname">city2</td><td>A reference to the second city. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ad730d037c3946ec1129657fc5e0cb353"></a>
@@ -170,6 +199,16 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Maps a travel route through Middle Earth. </p>
+<p>The first city is the original start point as well as the end point. The number of cities passed in does not include this start/end point.</p>
+<dl class="section return"><dt>Returns</dt><dd>List of cities to travel to. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">length</td><td>The number of cities to be visited. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a5cb0956acbe5e39525e5061c9f3cc79b"></a>
@@ -187,6 +226,10 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Prints out info on the created world. </p>
+<p>Prints the total number of cities, number of cities used, and their names.</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+
 </div>
 </div>
 <a id="ae724794944d0ade7854047e779eb7054"></a>
@@ -203,6 +246,10 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Prints out the cities in the order they appear in the cities vector. </p>
+<p>Prints out the cities separated by tabs, then each city, its location, and distance to each other city separated by tabs.</p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
 
 </div>
 </div>

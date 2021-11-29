@@ -34,6 +34,4 @@ private:
 
     mt19937 gen; // Mersenne-Twister random number engine
 };
-
-
 #endif

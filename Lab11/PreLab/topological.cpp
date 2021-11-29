@@ -8,6 +8,7 @@
 #include <stack>
 #include <list>
 
+
 using namespace std;
 /**
  * @brief Class to store the Graph - called node for some reason
@@ -97,9 +98,9 @@ void Node::preSort(string str){
             cout << s << " ";
         }
     }
-    for(string s : adj[idx[str]]){
-        if(!visit[idx[s]]){
-            preSort(s);
+    for(string st : adj[idx[str]]){
+        if(!visit[idx[st]]){
+            preSort(st);
         }
     }
 }

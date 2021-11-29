@@ -6,10 +6,10 @@
 CXX = clang++
 
 # Defines the flags we'll be passing to the C++ compiler
-CXXFLAGS = -Wall -g -O2
+CXXFLAGS = -Wall -g
 
 # All of the .o files for our program
-OBJECTS = traveling.o middleearth.o
+OBJECTS = puzzle.o
 
 # Compile our files into a.out
 a.out: $(OBJECTS)

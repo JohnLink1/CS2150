@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <cmath>
 #include "graph.h"
 
 using namespace std;
@@ -24,5 +25,11 @@ void Graph::print(){
     }
 }
 void Graph::swap(int pos1, int pos2){
-    return;
+    if((graph[pos1/3][pos1%3] == 0 || graph[pos2/3][pos2%3] == 0) && abs((pos1 / 3) - (pos2 / 3)) <= 1 && abs((pos1 % 3) - (pos2 % 3)) <= 1){
+        int temp = graph[pos2/3][pos2%3];
+        graph[pos2/3][pos2%3] = graph[pos1/3][pos1%3];
+        graph[pos1/3][pos1%3] = temp;
+    }
+    else
+        cout << "That operation is invalid" << endl;
 }

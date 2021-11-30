@@ -16,6 +16,12 @@ Graph readInGrid();
 int main(){
     Graph g = readInGrid();
     g.print();
+    g.swap(2, 5);
+    cout << endl;
+    g.print();
+    g.swap(2, 3);
+    cout << endl;
+    g.print();
     return 0;
 }
 

@@ -11,7 +11,7 @@ using namespace std;
 
 #include "middleearth.h"
 
-float computeDistance(MiddleEarth me, const string& start, vector<string> dests);
+float computeDistance(MiddleEarth* me, const string& start, vector<string> dests);
 void printRoute(const string& start, const vector<string>& dests);
 /**
  * @brief Main method to compute the shortest distance path through middle earth.
@@ -37,8 +37,8 @@ int main(int argc, char** argv) {
     int cities_to_visit = stoi(argv[5]);
 
     // create the world, and select your itinerary
-    MiddleEarth me(width, height, num_cities, rand_seed);
-    vector<string> dests = me.getItinerary(cities_to_visit);
+    MiddleEarth* me = new MiddleEarth(width, height, num_cities, rand_seed);
+    vector<string> dests = me->getItinerary(cities_to_visit);
     string start = dests[0];
     dests.erase(dests.begin());
     sort(dests.begin(), dests.end());
@@ -52,6 +52,7 @@ int main(int argc, char** argv) {
     cout << "Minimum path has distance ";
     cout << computeDistance(me, start, dests) << ": ";
     printRoute(start, dests);
+    delete me;
     return 0;
 }
 
@@ -68,12 +69,12 @@ int main(int argc, char** argv) {
 // This method will compute the full distance of the cycle that starts
 // at the 'start' parameter, goes to each of the cities in the dests
 // vector IN ORDER, and ends back at the 'start' parameter.
-float computeDistance(MiddleEarth me, const string& start, vector<string> dests) {
-    float dist = me.getDistance(start, dests[0]);
+float computeDistance(MiddleEarth* me, const string& start, vector<string> dests) {
+    float dist = me->getDistance(start, dests[0]);
     for(int x = 0; x < dests.size() - 1; x++){
-        dist += me.getDistance(dests[x], dests[x+1]);
+        dist += me->getDistance(dests[x], dests[x+1]);
     }
-    dist += me.getDistance(dests[dests.size() - 1], start);
+    dist += me->getDistance(dests[dests.size() - 1], start);
     return dist;
 }
 

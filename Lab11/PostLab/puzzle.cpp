@@ -6,18 +6,26 @@
 #include <cstdlib>
 #include <algorithm>
 #include <unordered_map>
+#include "graph.h"
 
 using namespace std;
 
-int grid[3][3];
-
 // Forward declarations
-void readInGrid();
+Graph readInGrid();
 
 int main(){
+    Graph g = readInGrid();
+    g.print();
     return 0;
 }
 
-void readInGrid(){
-    
+Graph readInGrid(){
+    int input[9];
+    string temp;
+    for(int x = 0; x < 9; x++){
+        cin >> temp;
+        input[x] = stoi(temp);
+    }
+    Graph g(input);
+    return g;
 }

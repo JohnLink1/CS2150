@@ -9,7 +9,7 @@ CXX = clang++
 CXXFLAGS = -Wall -g
 
 # All of the .o files for our program
-OBJECTS = puzzle.o
+OBJECTS = puzzle.o graph.o
 
 # Compile our files into a.out
 a.out: $(OBJECTS)

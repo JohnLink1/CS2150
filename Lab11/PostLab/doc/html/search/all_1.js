@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_3',['main',['../puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'puzzle.cpp']]]
+  ['generateneighbors_1',['generateNeighbors',['../puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd',1,'puzzle.cpp']]]
 ];

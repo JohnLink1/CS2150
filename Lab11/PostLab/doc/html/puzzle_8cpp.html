@@ -62,7 +62,8 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">puzzle.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -74,32 +75,59 @@ $(function() {
 <code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
-<code>#include &quot;<a class="el" href="graph_8h_source.html">graph.h</a>&quot;</code><br />
+<code>#include &lt;list&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for puzzle.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="puzzle_8cpp__incl.png" border="0" usemap="#puzzle_8cpp" alt=""/></div>
 <map name="puzzle_8cpp" id="puzzle_8cpp">
-<area shape="rect" title=" " alt="" coords="248,5,339,32"/>
-<area shape="rect" title=" " alt="" coords="5,155,85,181"/>
-<area shape="rect" title=" " alt="" coords="373,155,432,181"/>
-<area shape="rect" title=" " alt="" coords="143,80,193,107"/>
-<area shape="rect" title=" " alt="" coords="218,80,281,107"/>
-<area shape="rect" title=" " alt="" coords="305,80,370,107"/>
-<area shape="rect" title=" " alt="" coords="395,80,480,107"/>
-<area shape="rect" title=" " alt="" coords="505,80,629,107"/>
-<area shape="rect" href="graph_8h.html" title=" " alt="" coords="47,80,118,107"/>
+<area shape="rect" title=" " alt="" coords="297,5,388,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,85,107"/>
+<area shape="rect" title=" " alt="" coords="109,80,168,107"/>
+<area shape="rect" title=" " alt="" coords="192,80,243,107"/>
+<area shape="rect" title=" " alt="" coords="267,80,330,107"/>
+<area shape="rect" title=" " alt="" coords="354,80,419,107"/>
+<area shape="rect" title=" " alt="" coords="444,80,529,107"/>
+<area shape="rect" title=" " alt="" coords="554,80,678,107"/>
+<area shape="rect" title=" " alt="" coords="703,80,745,107"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a81eeeb65eaf48444fbf1e87565b28fd7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGraph.html">Graph</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a81eeeb65eaf48444fbf1e87565b28fd7">readInGrid</a> ()</td></tr>
-<tr class="separator:a81eeeb65eaf48444fbf1e87565b28fd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a096a45a197e8856189baecf3b9c78477"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a096a45a197e8856189baecf3b9c78477">readInGrid</a> ()</td></tr>
+<tr class="separator:a096a45a197e8856189baecf3b9c78477"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memItemLeft" align="right" valign="top">list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd">generateNeighbors</a> (string s)</td></tr>
+<tr class="separator:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a1d6a165be4e6eb99b6c5294d1eb665ae"><td class="memItemLeft" align="right" valign="top">map&lt; string, list&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a1d6a165be4e6eb99b6c5294d1eb665ae">combos</a></td></tr>
+<tr class="separator:a1d6a165be4e6eb99b6c5294d1eb665ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad11d4ba1e208814645951212a3b1ca0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#aad11d4ba1e208814645951212a3b1ca0">str</a> = &quot; 12345678&quot;</td></tr>
+<tr class="separator:aad11d4ba1e208814645951212a3b1ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0d179341299b1faf50026e7f7e2f5fdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d179341299b1faf50026e7f7e2f5fdd">&#9670;&nbsp;</a></span>generateNeighbors()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">list&lt; string &gt; generateNeighbors </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -117,17 +145,46 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a81eeeb65eaf48444fbf1e87565b28fd7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81eeeb65eaf48444fbf1e87565b28fd7">&#9670;&nbsp;</a></span>readInGrid()</h2>
+<a id="a096a45a197e8856189baecf3b9c78477"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a096a45a197e8856189baecf3b9c78477">&#9670;&nbsp;</a></span>readInGrid()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classGraph.html">Graph</a> readInGrid </td>
+          <td class="memname">string readInGrid </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a1d6a165be4e6eb99b6c5294d1eb665ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d6a165be4e6eb99b6c5294d1eb665ae">&#9670;&nbsp;</a></span>combos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, list&lt;string&gt; &gt; combos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aad11d4ba1e208814645951212a3b1ca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad11d4ba1e208814645951212a3b1ca0">&#9670;&nbsp;</a></span>str</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string str = &quot; 12345678&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">

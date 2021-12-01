@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['graph_13',['Graph',['../classGraph.html#a9d415b22f67ee7f9cb2429e3f88a915e',1,'Graph']]]
+  ['generateneighbors_7',['generateNeighbors',['../puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd',1,'puzzle.cpp']]]
 ];

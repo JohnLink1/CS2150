@@ -6,38 +6,60 @@
 #include <cstdlib>
 #include <algorithm>
 #include <unordered_map>
-#include "graph.h"
+#include <list>
 
 using namespace std;
 
-// Forward declarations
-vector<GraphNode> table;
-GraphNode* root = new GraphNode();
-int complete[3][3] = {{1, 2, 3,}, {4, 5, 6}, {7, 8, 0}};
+// Forward declaration
+map<string, list<string>> combos;
+string str = " 12345678";
+string readInGrid();
+list<string> generateNeighbors(string s);
 
 int main(){
-    root->value = readInGrid();
-    table.push_back(root->value);
-    buildTree(root);
+    string init = readInGrid();
+    do{
+        combos.insert(pair<string, list<string>>(str, generateNeighbors(str)));
+    } while(next_permutation(str.begin(), str.end()));
+    
     return 0;
 }
 
-void buildTree(GraphNode*& root){
-    root->nbors = root->value.findNeighbors(root.parent);
-    if(root->nbors == NULL || root->value.graph == complete)
-        return;
-    for(GraphNode gn : root->nbors){
-        buildTree(gn);
+list<string> generateNeighbors(string s){
+    list<string> l;
+    string temp = s;
+    int spos = s.find(" ");
+    int xpos = spos/3;
+    int ypos = spos%3;
+    if(xpos + 1 < 3){
+        swap(temp[spos], temp[ypos + 3*(xpos + 1)]);
+        l.push_back(temp);
+        temp = s;
     }
+    if(ypos + 1 < 3){
+        swap(temp[spos], temp[ypos + 1 + 3*xpos]);
+        l.push_back(temp);
+        temp = s;
+    }
+    if(xpos - 1 > 0){
+        swap(temp[spos], temp[ypos + 3*(xpos - 1)]);
+        l.push_back(temp);
+        temp = s;
+    }
+    if(ypos - 1 > 0){
+        swap(temp[spos], temp[ypos - 1 + 3*xpos ]);
+        l.push_back(temp);
+        temp = s;
+    }
+    return l;
 }
 
-Graph readInGrid(){
-    int input[9];
+string readInGrid(){
     string temp;
+    string order;
     for(int x = 0; x < 9; x++){
         cin >> temp;
-        input[x] = stoi(temp);
+        order+= temp;
     }
-    Graph g(input);
-    return g;
+    return order;
 }

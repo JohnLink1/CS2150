@@ -72,6 +72,7 @@ $(function() {
 <code>#include &lt;string&gt;</code><br />
 <code>#include &lt;map&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;queue&gt;</code><br />
 <code>#include &lt;cstdlib&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
 <code>#include &lt;unordered_map&gt;</code><br />
@@ -81,15 +82,16 @@ Include dependency graph for puzzle.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="puzzle_8cpp__incl.png" border="0" usemap="#puzzle_8cpp" alt=""/></div>
 <map name="puzzle_8cpp" id="puzzle_8cpp">
-<area shape="rect" title=" " alt="" coords="297,5,388,32"/>
+<area shape="rect" title=" " alt="" coords="340,5,431,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,85,107"/>
 <area shape="rect" title=" " alt="" coords="109,80,168,107"/>
 <area shape="rect" title=" " alt="" coords="192,80,243,107"/>
 <area shape="rect" title=" " alt="" coords="267,80,330,107"/>
-<area shape="rect" title=" " alt="" coords="354,80,419,107"/>
-<area shape="rect" title=" " alt="" coords="444,80,529,107"/>
-<area shape="rect" title=" " alt="" coords="554,80,678,107"/>
-<area shape="rect" title=" " alt="" coords="703,80,745,107"/>
+<area shape="rect" title=" " alt="" coords="354,80,417,107"/>
+<area shape="rect" title=" " alt="" coords="441,80,506,107"/>
+<area shape="rect" title=" " alt="" coords="531,80,616,107"/>
+<area shape="rect" title=" " alt="" coords="641,80,765,107"/>
+<area shape="rect" title=" " alt="" coords="789,80,832,107"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -99,6 +101,10 @@ Functions</h2></td></tr>
 <tr class="separator:a096a45a197e8856189baecf3b9c78477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memItemLeft" align="right" valign="top">list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd">generateNeighbors</a> (string s)</td></tr>
 <tr class="separator:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ada15786f244eeaa5d16817d8ef04a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a0ada15786f244eeaa5d16817d8ef04a9">findPath</a> (string s)</td></tr>
+<tr class="separator:a0ada15786f244eeaa5d16817d8ef04a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa8e0a3e0668dab70cf2bb98cefaddbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#aaa8e0a3e0668dab70cf2bb98cefaddbf">print</a> (string s)</td></tr>
+<tr class="separator:aaa8e0a3e0668dab70cf2bb98cefaddbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -106,10 +112,34 @@ Functions</h2></td></tr>
 Variables</h2></td></tr>
 <tr class="memitem:a1d6a165be4e6eb99b6c5294d1eb665ae"><td class="memItemLeft" align="right" valign="top">map&lt; string, list&lt; string &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a1d6a165be4e6eb99b6c5294d1eb665ae">combos</a></td></tr>
 <tr class="separator:a1d6a165be4e6eb99b6c5294d1eb665ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeaa28cb09b8921cfa7815ad42d947f4"><td class="memItemLeft" align="right" valign="top">map&lt; string, bool &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#adeaa28cb09b8921cfa7815ad42d947f4">visit</a></td></tr>
+<tr class="separator:adeaa28cb09b8921cfa7815ad42d947f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35cbeeeac48d8b66d617e511dc8f8e3f"><td class="memItemLeft" align="right" valign="top">map&lt; string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a35cbeeeac48d8b66d617e511dc8f8e3f">nums</a></td></tr>
+<tr class="separator:a35cbeeeac48d8b66d617e511dc8f8e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad11d4ba1e208814645951212a3b1ca0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#aad11d4ba1e208814645951212a3b1ca0">str</a> = &quot; 12345678&quot;</td></tr>
 <tr class="separator:aad11d4ba1e208814645951212a3b1ca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb4ba4b5efe5d71f427bb3bc9dd9a078"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#acb4ba4b5efe5d71f427bb3bc9dd9a078">ans</a> = &quot;12345678 &quot;</td></tr>
+<tr class="separator:acb4ba4b5efe5d71f427bb3bc9dd9a078"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0ada15786f244eeaa5d16817d8ef04a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ada15786f244eeaa5d16817d8ef04a9">&#9670;&nbsp;</a></span>findPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int findPath </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a0d179341299b1faf50026e7f7e2f5fdd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0d179341299b1faf50026e7f7e2f5fdd">&#9670;&nbsp;</a></span>generateNeighbors()</h2>
 
@@ -145,6 +175,24 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="aaa8e0a3e0668dab70cf2bb98cefaddbf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa8e0a3e0668dab70cf2bb98cefaddbf">&#9670;&nbsp;</a></span>print()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a096a45a197e8856189baecf3b9c78477"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a096a45a197e8856189baecf3b9c78477">&#9670;&nbsp;</a></span>readInGrid()</h2>
 
@@ -163,6 +211,20 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="acb4ba4b5efe5d71f427bb3bc9dd9a078"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4ba4b5efe5d71f427bb3bc9dd9a078">&#9670;&nbsp;</a></span>ans</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string ans = &quot;12345678 &quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a1d6a165be4e6eb99b6c5294d1eb665ae"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1d6a165be4e6eb99b6c5294d1eb665ae">&#9670;&nbsp;</a></span>combos</h2>
 
@@ -177,6 +239,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a35cbeeeac48d8b66d617e511dc8f8e3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35cbeeeac48d8b66d617e511dc8f8e3f">&#9670;&nbsp;</a></span>nums</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, int&gt; nums</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="aad11d4ba1e208814645951212a3b1ca0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad11d4ba1e208814645951212a3b1ca0">&#9670;&nbsp;</a></span>str</h2>
 
@@ -185,6 +261,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">string str = &quot; 12345678&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adeaa28cb09b8921cfa7815ad42d947f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeaa28cb09b8921cfa7815ad42d947f4">&#9670;&nbsp;</a></span>visit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">map&lt;string, bool&gt; visit</td>
         </tr>
       </table>
 </div><div class="memdoc">

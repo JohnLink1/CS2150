@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['str_27',['str',['../puzzle_8cpp.html#aad11d4ba1e208814645951212a3b1ca0',1,'puzzle.cpp']]]
+  ['nums_19',['nums',['../puzzle_8cpp.html#a35cbeeeac48d8b66d617e511dc8f8e3f',1,'puzzle.cpp']]]
 ];

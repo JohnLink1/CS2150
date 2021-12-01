@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['combos_10',['combos',['../puzzle_8cpp.html#a1d6a165be4e6eb99b6c5294d1eb665ae',1,'puzzle.cpp']]]
+  ['ans_17',['ans',['../puzzle_8cpp.html#acb4ba4b5efe5d71f427bb3bc9dd9a078',1,'puzzle.cpp']]]
 ];

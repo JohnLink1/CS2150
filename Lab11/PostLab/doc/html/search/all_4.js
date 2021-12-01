@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['readingrid_4',['readInGrid',['../puzzle_8cpp.html#a096a45a197e8856189baecf3b9c78477',1,'puzzle.cpp']]]
+  ['main_4',['main',['../puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'puzzle.cpp']]]
 ];

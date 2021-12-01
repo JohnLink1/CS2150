@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generateneighbors_7',['generateNeighbors',['../puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd',1,'puzzle.cpp']]]
+  ['findpath_12',['findPath',['../puzzle_8cpp.html#a0ada15786f244eeaa5d16817d8ef04a9',1,'puzzle.cpp']]]
 ];

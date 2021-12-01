@@ -11,18 +11,24 @@
 using namespace std;
 
 // Forward declarations
-Graph readInGrid();
+vector<GraphNode> table;
+GraphNode* root = new GraphNode();
+int complete[3][3] = {{1, 2, 3,}, {4, 5, 6}, {7, 8, 0}};
 
 int main(){
-    Graph g = readInGrid();
-    g.print();
-    g.swap(2, 5);
-    cout << endl;
-    g.print();
-    g.swap(2, 3);
-    cout << endl;
-    g.print();
+    root->value = readInGrid();
+    table.push_back(root->value);
+    buildTree(root);
     return 0;
+}
+
+void buildTree(GraphNode*& root){
+    root->nbors = root->value.findNeighbors(root.parent);
+    if(root->nbors == NULL || root->value.graph == complete)
+        return;
+    for(GraphNode gn : root->nbors){
+        buildTree(gn);
+    }
 }
 
 Graph readInGrid(){

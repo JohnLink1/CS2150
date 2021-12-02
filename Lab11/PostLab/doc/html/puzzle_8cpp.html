@@ -98,14 +98,19 @@ Include dependency graph for puzzle.cpp:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a096a45a197e8856189baecf3b9c78477"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a096a45a197e8856189baecf3b9c78477">readInGrid</a> ()</td></tr>
+<tr class="memdesc:a096a45a197e8856189baecf3b9c78477"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads user input to build the grid..  <a href="puzzle_8cpp.html#a096a45a197e8856189baecf3b9c78477">More...</a><br /></td></tr>
 <tr class="separator:a096a45a197e8856189baecf3b9c78477"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memItemLeft" align="right" valign="top">list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd">generateNeighbors</a> (string s)</td></tr>
+<tr class="memdesc:a0d179341299b1faf50026e7f7e2f5fdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates all possible next moves that could be played.  <a href="puzzle_8cpp.html#a0d179341299b1faf50026e7f7e2f5fdd">More...</a><br /></td></tr>
 <tr class="separator:a0d179341299b1faf50026e7f7e2f5fdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ada15786f244eeaa5d16817d8ef04a9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#a0ada15786f244eeaa5d16817d8ef04a9">findPath</a> (string s)</td></tr>
+<tr class="memdesc:a0ada15786f244eeaa5d16817d8ef04a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the shortest path to the answer.  <a href="puzzle_8cpp.html#a0ada15786f244eeaa5d16817d8ef04a9">More...</a><br /></td></tr>
 <tr class="separator:a0ada15786f244eeaa5d16817d8ef04a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa8e0a3e0668dab70cf2bb98cefaddbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#aaa8e0a3e0668dab70cf2bb98cefaddbf">print</a> (string s)</td></tr>
+<tr class="memdesc:aaa8e0a3e0668dab70cf2bb98cefaddbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to convert 9 char string to 3x3 array.  <a href="puzzle_8cpp.html#aaa8e0a3e0668dab70cf2bb98cefaddbf">More...</a><br /></td></tr>
 <tr class="separator:aaa8e0a3e0668dab70cf2bb98cefaddbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main method to organize input and output of the puzzle solver.  <a href="puzzle_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">More...</a><br /></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
@@ -138,6 +143,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculates the shortest path to the answer. </p>
+<p>Utilizes breadth-first search to count its way through the tree of possible paths</p>
+<dl class="section return"><dt>Returns</dt><dd>Path length </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Starting grid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a0d179341299b1faf50026e7f7e2f5fdd"></a>
@@ -156,6 +171,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculates all possible next moves that could be played. </p>
+<p>Puts all posible moves into a list of strings to be stored in the combos map.</p>
+<dl class="section return"><dt>Returns</dt><dd>List of all posible moves. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Starting grid. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
@@ -172,6 +197,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Main method to organize input and output of the puzzle solver. </p>
+<dl class="section return"><dt>Returns</dt><dd>Exit code </dd></dl>
 
 </div>
 </div>
@@ -191,6 +219,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Method to convert 9 char string to 3x3 array. </p>
+<dl class="section return"><dt>Returns</dt><dd>void </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>Input string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a096a45a197e8856189baecf3b9c78477"></a>
@@ -207,6 +244,10 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Reads user input to build the grid.. </p>
+<p>Reads in a string and converts spaces to 0s.</p>
+<dl class="section return"><dt>Returns</dt><dd>Starting grid. </dd></dl>
 
 </div>
 </div>

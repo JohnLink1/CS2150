@@ -11,10 +11,17 @@
 
 using namespace std;
 
+/*! @mainpage Graph Solver Code
+ *
+ * boom.... solved
+ *
+ */
+
+
 // Forward declaration
-map<string, list<string>> combos;
-map<string, bool> visit;
-map<string, int> nums;
+map<string, list<string>> combos; /* @var hashtable to store next possible moves*/
+map<string, bool> visit; /* @var hashtable to store if the specific combination has been visited already*/
+map<string, int> nums; /* @var hashtable to store path length so far*/
 string str = " 12345678";
 string ans = "12345678 ";
 string readInGrid();
@@ -22,6 +29,13 @@ list<string> generateNeighbors(string s);
 int findPath(string s);
 void print(string s);
 
+/**
+ * @brief Main method to organize input and output of the puzzle solver
+ *
+ *
+ * @return Exit code
+ *
+ */
 int main(){
     cout << "Enter puzzle" << endl;
     string init = readInGrid();
@@ -35,6 +49,14 @@ int main(){
     cout << path << endl;
     return 0;
 }
+
+/**
+ * @brief Method to convert 9 char string to 3x3 array
+ *
+ *
+ * @return void
+ * @param s Input string.
+ */
 void print(string s){
     for(int x = 0; x<3; x++){
         for(int y = 0; y<3; y++)
@@ -43,6 +65,14 @@ void print(string s){
     }
 }
 
+/**
+ * @brief Calculates the shortest path to the answer.
+ *
+ * Utilizes breadth-first search to count its way through the tree of possible paths
+ *
+ * @return Path length
+ * @param s Starting grid.
+ */
 int findPath(string s){
     queue<string> q;
     visit[s] = true;
@@ -65,6 +95,14 @@ int findPath(string s){
     return -1;
 }
 
+/**
+ * @brief Calculates all possible next moves that could be played.
+ *
+ * Puts all posible moves into a list of strings to be stored in the combos map.
+ *
+ * @return List of all posible moves.
+ * @param s Starting grid.
+ */
 list<string> generateNeighbors(string s){
     list<string> l;
     string temp = s;
@@ -94,6 +132,14 @@ list<string> generateNeighbors(string s){
     return l;
 }
 
+/**
+ * @brief Reads user input to build the grid..
+ *
+ * Reads in a string and converts spaces to 0s.
+ *
+ * @return Starting grid.
+ *
+ */
 string readInGrid(){
     string temp;
     string order;

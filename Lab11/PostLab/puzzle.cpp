@@ -19,9 +19,9 @@ using namespace std;
 
 
 // Forward declaration
-map<string, list<string>> combos; /* @var hashtable to store next possible moves*/
-map<string, bool> visit; /* @var hashtable to store if the specific combination has been visited already*/
-map<string, int> nums; /* @var hashtable to store path length so far*/
+unordered_map<string, list<string>> combos; /* @var hashtable to store next possible moves*/
+unordered_map<string, bool> visit; /* @var hashtable to store if the specific combination has been visited already*/
+unordered_map<string, int> nums; /* @var hashtable to store path length so far*/
 string str = " 12345678";
 string ans = "12345678 ";
 string readInGrid();

@@ -115,7 +115,7 @@ void Node::preSort(string str){
  */
 
 void Node::sort(){
-    map<string, int> starts;
+    queue<string> starts;
     for(int x = 0; x < size; x++){
         visit[x] = false;
     }
@@ -127,15 +127,27 @@ void Node::sort(){
     }
     for(pair<string, int> p : idx){
         if(!visit[p.second])
-            starts.insert(p);
+            starts.push(p.first);
     }
 
     for(int x = 0; x < size; x++){
         visit[x] = false;
-    } 
-    for(pair<string, int> p: starts){
-        cout << p.first << " ";
-        preSort(p.first);
+    }
+    string temp;
+
+    while(!starts.empty()){
+        temp = starts.front();
+        if(visit[idx[temp]] == false)
+            cout << temp << " ";
+        //print(temp);
+        starts.pop();
+        for(string s1 : adj[idx[temp]]){
+            if(visit[idx[s1]] == false){
+                visit[idx[s1]] = true;
+                cout << s1 << " ";
+                starts.push(s1);
+            }
+        }
     }
 
     cout << endl;
